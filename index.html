@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <title>Magazin Fitness</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- va fi explicat când ajungem la CSS -->
+        <meta name="keywords" content="internet, tehnici web, HTML, taguri" />
+        <!--cuvintele cheie ale paginii; majoritatea motoarelor de căutare ignoră keywords -->
+        <meta
+            name="description"
+            content="Curs de Tehnici Web. Limbajul HTML. Taguri."
+        />
+        <!-- descrierea paginii, adesea apare sub link când sunt afișate rezultatele căutării -->
+        <meta name="author" content="Vlad Apostol" />
+        <!-- autorul/autoarea paginii-->
+        <link
+            rel="icon"
+            type="image/png"
+            href="./resurse/imagini/favicon/favicon-96x96.png"
+            sizes="96x96"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="./resurse/imagini/favicon/favicon.svg"
+        />
+        <link
+            rel="shortcut icon"
+            href="./resurse/imagini/favicon/favicon.ico"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./resurse/imagini/favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="manifest"
+            href="./resurse/imagini/favicon/site.webmanifest"
+        />
+        <link rel="stylesheet" href="./resurse/css/style.css" />
+        <link rel="stylesheet" href="./resurse/css/nav.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <h1>Site Sali Fitness si Magazin</h1>
+            <nav>
+                <div id="navigatie">
+                    <ul>
+                        <li>
+                            <a href="#sectiune1">Acasa</a>
+                            <ul class="submenu">
+                                <li><a href="#introducere">Introducere</a></li>
+                                <li>
+                                    <a href="#intrebari">Intrebari frecvente</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#subsectiune1">Abonamente</a></li>
+                        <li><a href="#subsectiune2">Nutritie</a></li>
+                        <li><a href="#subsectiune2">Imbracaminte</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main-pagina-1">
+            <div class="layout-1">
+                <h1>Magazin sali si echipamente fitness</h1>
+                <figure>
+                    <picture>
+                        <source
+                            srcset="
+                                ./resurse/imagini/echipamente/image-small.jpg
+                            "
+                            media="(max-width: 480px)"
+                        />
+                        <source
+                            srcset="
+                                ./resurse/imagini/echipamente/image-medium.jpg
+                            "
+                            media="(max-width: 768px)"
+                        />
+                        <img
+                            src="./resurse/imagini/echipamente/image-large.jpg"
+                            alt="Descrierea imaginii"
+                        />
+                    </picture>
+                    <figcaption>
+                        Bine ati venit pe site-ul Sali de Fitness!
+                        <a
+                            href="./resurse/imagini/echipamente/image-large.jpg"
+                            download="logo.jpg"
+                        >
+                            Apasă aici pentru descărcare
+                        </a>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="layout-2-3-4">
+                <div class="layout-2">
+                    <div class="table-container">
+                        <table>
+                            <caption>
+                                Top Produse Fitness Vândute
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th>Produs</th>
+                                    <th>Categorie</th>
+                                    <th>Preț</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gantere Reglabile</td>
+                                    <td>Echipament</td>
+                                    <td>350 RON</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>Saltea Yoga</td>
+                                    <td>Accesorii</td>
+                                    <td>120 RON</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>Bicicletă Fitness</td>
+                                    <td>Echipament</td>
+                                    <td>1.200 RON</td>
+                                    <td>⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Abonament Lunar</td>
+                                    <td>150 RON</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        Toate prețurile includ TVA
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="layout-3-4">
+                    <div class="layout-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Doloremque aliquam ducimus porro perferendis odio magni
+                        consequatur autem dolorem eum nobis rerum placeat nisi
+                        voluptatem saepe nesciunt qui, earum vel quod!
+                    </div>
+                    <div class="layout-4">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Id in voluptatibus consequuntur, dolorem incidunt
+                        voluptates asperiores deserunt fuga dignissimos, velit
+                        aut quidem temporibus consequatur illum aliquid
+                        reiciendis laboriosam maiores quod?
+                    </div>
+                </div>
+            </div>
+            <div class="layout5-6-7">
+                <div class="layout-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Atque id consequatur tempore! Quasi laborum consequatur
+                    eligendi dignissimos doloribus nihil exercitationem modi
+                    nam, illo natus distinctio sed mollitia perspiciatis totam
+                    consectetur.
+                </div>
+                <div class="layout-6">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequuntur eligendi, fugit veritatis tempore facere
+                    voluptatibus, non corporis velit provident ipsa cum iste.
+                    Expedita quasi quo recusandae tenetur, architecto
+                    consectetur quisquam?
+                </div>
+                <div class="layout-7">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Sapiente distinctio, quibusdam repudiandae eveniet
+                    blanditiis maxime voluptas perferendis, officiis deleniti
+                    odio obcaecati, aliquid magnam nulla ad eius reiciendis nemo
+                    velit magni.
+                </div>
+            </div>
+            <div class="layout-8">
+                <p>
+                    Fitnessul este esențial pentru menținerea unei vieți
+                    sănătoase. Exercițiile regulate îmbunătățesc sănătatea
+                    inimii, cresc rezistența și ajută la menținerea unei
+                    greutăți corporale optime. Adoptarea unui stil de viață
+                    activ poate avea beneficii pe termen lung atât pentru corp,
+                    cât și pentru minte. Poți folosi echipamente fitness precum
+                    <b>benzi elastice</b> pentru un antrenament acasă eficient.
+                    De asemenea, suplimentele precum <b>proteinele</b> și
+                    <b>creatina</b> pot susține performanța și recuperarea
+                    musculară.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Îmbunătățește sănătatea cardiovasculară</strong>
+                    </li>
+                    <li>Crește forța și flexibilitatea</li>
+                    <li>Ajută la gestionarea stresului</li>
+                    <li>
+                        <strong>Contribuie la un somn mai odihnitor</strong>
+                    </li>
+                    <li>Sprijină pierderea în greutate</li>
+                </ul>
+                <h2>Videoclipuri despre echipamente de fitness</h2>
+                <div class="container-iframe">
+                    <div class="taburi-iframe">
+                        <p>
+                            <a
+                                href="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
+                                target="videoFrame"
+                                >Mituri fitness</a
+                            >
+                        </p>
+                        <p>
+                            <a
+                                href="https://www.youtube.com/embed/VHyGqsPOUHs"
+                                target="videoFrame"
+                                >Exercitii pentru incepatori</a
+                            >
+                        </p>
+                    </div>
+                    <iframe
+                        name="videoFrame"
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
+                        frameborder="0"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+                <h2>Întrebări frecvente despre echipamentele de fitness</h2>
+
+                <details>
+                    <summary>
+                        Care este diferența dintre o bandă de alergat și un
+                        eliptic?
+                    </summary>
+                    <p>
+                        Banda de alergat simulează alergarea sau mersul și pune
+                        mai multă presiune pe articulații, în timp ce elipticul
+                        oferă un antrenament cu impact redus, protejând
+                        genunchii și șoldurile.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Ce greutăți sunt recomandate pentru începători?
+                    </summary>
+                    <p>
+                        Începătorii ar trebui să înceapă cu gantere între 2-5
+                        kg, concentrându-se pe tehnică înainte de a crește
+                        greutatea.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Cât spațiu am nevoie pentru un aparat de vâslit?
+                    </summary>
+                    <p>
+                        Majoritatea aparatelor de vâslit au o lungime între 2 și
+                        2,5 metri și necesită un spațiu liber în jur pentru o
+                        utilizare confortabilă.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Este mai eficientă o bicicletă statică sau o bandă de
+                        alergat?
+                    </summary>
+                    <p>
+                        Depinde de obiectivul tău. Banda de alergat arde mai
+                        multe calorii, dar bicicleta statică este mai blândă cu
+                        articulațiile.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Trebuie să întrețin echipamentele de fitness acasă?
+                    </summary>
+                    <p>
+                        Da, este recomandat să cureți echipamentele după
+                        utilizare, să verifici periodic șuruburile și să
+                        lubrifiezi componentele în mișcare.
+                    </p>
+                </details>
+            </div>
+        </main>
+        <footer>
+            <a href="#" id="link-top">
+                <div class="rotated-content">
+                    <div id="triunghi"></div>
+                </div>
+            </a>
+            <br />
+            <a href="tel:+40723248948">Call</a>
+            <a href="mailto:vladgabrielapostol@gmail.com">Mail</a>
+            <a
+                href="https://www.google.com/maps?q=Facultatea+de+Matematica+si+Informatica,+Bucuresti"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Adresa noastra
+            </a>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8841143984737!2d26.097011776145486!3d44.43553930148188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sro!2sro!4v1741533829980!5m2!1sro!2sro"
+                width="200"
+                height="200"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <small>
+                &copy; <time datetime="2024-03-08">8 martie 2024</time> - Toate
+                drepturile rezervate.
+            </small>
+        </footer>
+    </body>
+</html>
