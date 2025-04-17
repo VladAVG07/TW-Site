@@ -4,6 +4,24 @@ const fs = require('fs');
 
 app = express();
 
+// var persoana = {
+//     nume: 'Ionescu',
+//     prenume: 'Gigel',
+// };
+
+// a = {
+//     prop: 10,
+//     b: [100, { c: 17 }, 'abc'],
+// };
+
+// console.log(a.b[1].c);
+
+// v = [10, 27, 30, 52, 21];
+
+// a = v.find((a) => a % 2 == 1);
+
+// console.log(a);
+
 console.log('Folderul proiectului: ', __dirname);
 console.log('Calea fisierului index.js: ', __filename);
 console.log('Folderul curent de lucru: ', process.cwd());
@@ -57,7 +75,19 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     });
 }
 
+vect_foldere = ['temp', 'backup', 'temp1'];
+for (let folder of vect_foldere) {
+    let caleFolder = path.join(__dirname, folder);
+    if (!fs.existsSync(caleFolder)) {
+        fs.mkdirSync(caleFolder);
+    }
+}
+
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
+
+app.get('/favicon.ico', function (req, res) {
+    res.sendFile(path.join(__dirname, 'resurse/imagini/favicon/favicon.ico'));
+});
 
 app.get(['/', '/index', '/home'], function (req, res) {
     res.render('pagini/index', {
@@ -96,7 +126,11 @@ app.get('/abc', function (req, res, next) {
     console.log('------------');
 });
 
-app.get('/*.ejs', function (req, res, next) {
+app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
+    afisareEroare(res, 403);
+});
+
+app.get(/^\/.*\.ejs$/, function (req, res, next) {
     afisareEroare(res, 400);
 });
 
