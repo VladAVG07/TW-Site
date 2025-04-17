@@ -43,7 +43,6 @@ body {
     }
 }
 
-/* Stiluri generale pentru header, footer, secțiuni */
 header,
 footer,
 section {
@@ -68,7 +67,6 @@ footer {
     padding: var(--padding-text);
 }
 
-/* Imagini și iframe-uri responsive */
 img,
 iframe {
     width: 100%;
@@ -78,61 +76,40 @@ iframe {
     margin: 0 auto;
 }
 
-/* Link-urile din header/footer să rămână albe */
 a {
     color: white;
 }
 
-/* Meniu navigație din header */
 #navigatie {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* ajustează după preferințe */
 }
-
-/* -------------------------------------------------
-   LAYOUT pentru main.main-pagina-1 și div-urile goale
-   ------------------------------------------------- */
-
-/*
- Structura dorită în <main class="main-pagina-1">
-  - Rând 1:  .layout-1
-  - Rând 2:  .layout-2-3-4 (care conține layout-2 și .layout-3-4)
-  - Rând 3:  .layout5-6-7 (3 coloane)
-  - Rând 4:  .layout-8
-  - Rând 5:  section#sectiune1 (care conține #introducere, #intrebari, etc.)
-*/
 
 main.main-pagina-1 {
     display: grid;
     grid-template-rows: auto auto auto auto auto;
     gap: var(--spatiere-mica);
-    /* Poți ajusta gap dacă vrei mai mult spațiu */
 }
 
-/* .layout-2-3-4: 2 coloane (stânga: layout-2, dreapta: .layout-3-4) */
 .layout-2-3-4 {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: var(--spatiere-mica);
 }
 
-/* .layout-3-4: în coloana din dreapta, 2 rânduri suprapuse (layout-3, layout-4) */
 .layout-3-4 {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: var(--spatiere-mica);
 }
 
-/* .layout5-6-7: 3 coloane egale pentru layout-5, layout-6, layout-7 */
 .layout5-6-7 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--spatiere-mica);
 }
 
-/* Stiluri pentru blocurile goale (layout-1,2,3,4,5,6,7,8) */
 .layout-1,
 .layout-2,
 .layout-3,
@@ -270,52 +247,52 @@ caption {
 }
 
 thead th {
-    background-color: #2c3e50; /* Culoare mai închisă */
+    background-color: #2c3e50;
     color: white;
     padding: 10px;
-    border: 2px solid #34495e; /* Culoare mai închisă */
+    border: 2px solid #34495e;
 }
 
 tbody td {
     padding: 10px;
-    border: 1px solid #34495e; /* Culoare mai închisă */
+    border: 1px solid #34495e;
 }
 
 tfoot td {
-    background-color: #2c3e50; /* Culoare mai închisă */
+    background-color: #2c3e50;
     color: white;
     font-weight: bold;
     padding: 10px;
-    border: 2px solid #34495e; /* Culoare mai închisă */
+    border: 2px solid #34495e;
 }
 
 tbody tr:nth-child(even) td {
-    background-color: #34495e; /* Culoare mai închisă */
+    background-color: #34495e;
     color: white;
 }
 
 tbody tr:nth-child(odd) td {
-    background-color: #2c3e50; /* Culoare mai închisă */
+    background-color: #2c3e50;
     color: white;
 }
 
 tbody td:nth-child(odd) {
-    border-right: 2px solid #2c3e50; /* Culoare mai închisă */
+    border-right: 2px solid #2c3e50;
 }
 
 tbody td:nth-child(even) {
-    border-right: 2px solid #34495e; /* Culoare mai închisă */
+    border-right: 2px solid #34495e;
 }
 
 thead {
-    border-bottom: 3px solid #34495e; /* Culoare mai închisă */
+    border-bottom: 3px solid #34495e;
 }
 
 tfoot {
-    border-top: 3px solid #34495e; /* Culoare mai închisă */
+    border-top: 3px solid #34495e;
 }
 
 tbody tr:hover {
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7); /* Box-shadow mai vizibil */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
     transition: box-shadow 0.5s ease;
 }

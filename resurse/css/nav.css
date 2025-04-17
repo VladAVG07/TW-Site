@@ -3,6 +3,14 @@ header {
     padding: 10px 0;
 }
 
+header,
+header nav #navigatie ul li a,
+header nav #navigatie ul .submenu li a,
+.menu-icon {
+    font-family: 'Tektur', sans-serif;
+    font-weight: bold;
+}
+
 header nav #navigatie {
     display: flex;
     justify-content: center;
@@ -78,4 +86,12 @@ header nav #navigatie ul li:hover > .submenu {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+@media (min-width: 701px) {
+    #menu-toggle,
+    .menu li input[type='checkbox'],
+    .menu-icon {
+        display: none;
+    }
 }

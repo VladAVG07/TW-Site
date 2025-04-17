@@ -39,7 +39,18 @@
             href="./resurse/imagini/favicon/site.webmanifest"
         />
         <link rel="stylesheet" href="./resurse/css/style.css" />
-        <link rel="stylesheet" href="./resurse/css/nav.css" />
+        <link
+            rel="stylesheet"
+            href="./resurse/css/nav.css"
+            type="text/css"
+            media="screen and (min-width: 701px)"
+        />
+        <link
+            rel="stylesheet"
+            href="./resurse/css/nav700.css"
+            type="text/css"
+            media="screen and (max-width: 700px)"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -50,11 +61,18 @@
     <body>
         <header>
             <h1>Site Sali Fitness si Magazin</h1>
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <input type="checkbox" id="menu-toggle" />
             <nav>
                 <div id="navigatie">
-                    <ul>
+                    <ul class="menu">
                         <li>
-                            <a href="#sectiune1">Acasa</a>
+                            <input type="checkbox" id="submenu-toggle-1" />
+                            <label for="submenu-toggle-1">Acasa</label>
                             <ul class="submenu">
                                 <li><a href="#introducere">Introducere</a></li>
                                 <li>
@@ -64,7 +82,7 @@
                         </li>
                         <li><a href="#subsectiune1">Abonamente</a></li>
                         <li><a href="#subsectiune2">Nutritie</a></li>
-                        <li><a href="#subsectiune2">Imbracaminte</a></li>
+                        <li><a href="#subsectiune3">Imbracaminte</a></li>
                     </ul>
                 </div>
             </nav>
