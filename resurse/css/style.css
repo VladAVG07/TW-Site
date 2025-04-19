@@ -1,48 +1,43 @@
+/* ===================== ROOT VARIABLES ===================== */
 :root {
     --spatiere-mare: 80px;
     --spatiere-medie: 40px;
     --spatiere-mica: 20px;
     --padding-text: 15px;
-    --culoare-fundal-header: #075615;
-    --culoare-fundal-footer: #1a7b33;
-    --culoare-fundal-main: #f4f4f4;
+    --margin-top-sectiuni: 10px;
+
+    /* Updated Colors - Darker background scheme */
+    --culoare-fundal-header: #1b5e20;
+    --culoare-fundal-footer: #2e7d32;
+    --culoare-fundal-main: #e0e0e0;
+    --background-color: #689f38;
+    --border-color: #5d4037;
+    --highlights-color: #ff8f00;
+    --color4: #7cb342;
+    --color5: #dce775;
+
     --border-radius: 10px;
     --box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    --margin-top-sectiuni: 10px;
-    --background-color: #83bdb1;
-    --border-color: #e63b2c;
-    --highlights-color: #e67c2c;
-    --color4: #83bdb1;
-    --color5: #dbb090;
+
+    --culoare-border-thead: #1b5e20;
+    --culoare-border-tfoot: #1b5e20;
+    --culoare-border-standard: #bdbdbd;
+    --culoare-c1: #8bc34a;
+    --culoare-c2: #ffb74d;
 }
 
+/* ===================== BASE STYLES ===================== */
 body {
     font-family: 'Tektur';
     font-size: large;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding-left: var(--spatiere-mare);
-    padding-right: var(--spatiere-mare);
+    padding: 0 var(--spatiere-mare);
     background-color: var(--culoare-fundal-main);
 }
 
-@media (max-width: 1000px) {
-    body {
-        font-size: medium;
-        padding-left: var(--spatiere-medie);
-        padding-right: var(--spatiere-medie);
-    }
-}
-
-@media (max-width: 700px) {
-    body {
-        font-size: small;
-        padding-left: var(--spatiere-mica);
-        padding-right: var(--spatiere-mica);
-    }
-}
-
+/* ===================== LAYOUT COMPONENTS ===================== */
 header,
 footer,
 section {
@@ -50,88 +45,123 @@ section {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     padding: var(--padding-text);
-    margin: var(--margin-top-sectiuni);
+    margin: var(--margin-top-sectiuni) 0;
+    transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 
 header {
     background-color: var(--culoare-fundal-header);
     color: white;
     text-align: center;
-    padding: var(--padding-text);
 }
 
 footer {
     background-color: var(--culoare-fundal-footer);
     color: white;
     text-align: center;
-    padding: var(--padding-text);
 }
 
+/* ===================== MEDIA ELEMENTS ===================== */
 img,
 iframe {
     width: 100%;
     max-width: 800px;
     min-width: 300px;
     display: block;
-    margin: 0 auto;
+    margin: var(--spatiere-mica) auto;
+    border-radius: var(--border-radius);
+    transition: box-shadow 0.3s ease;
 }
 
-a {
-    color: white;
+.video-responsive {
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    transition: border-color 0.5s ease;
 }
 
+.video-responsive iframe {
+    border: 5px solid;
+    border-left-color: var(--highlights-color);
+    border-top-color: var(--highlights-color);
+    border-right-color: var(--color4);
+    border-bottom-color: var(--color4);
+}
+
+.container-iframe {
+    border: 1px solid black;
+}
+
+/* ===================== NAVIGATION ===================== */
 #navigatie {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: var(--spatiere-mica) 0;
 }
 
-main.main-pagina-1 {
+a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--highlights-color);
+}
+
+/* ===================== GRID LAYOUT ===================== */
+main.container {
     display: grid;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+        'item1 item1 item1 item1'
+        'item2 item2 item3 item3'
+        'item2 item2 item4 item4'
+        'item5 item6 item6 item7'
+        'item8 item8 item8 item8';
     gap: var(--spatiere-mica);
+    grid-template-columns: repeat(4, 1fr);
+    margin: var(--spatiere-medie) 0;
 }
 
-.layout-2-3-4 {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--spatiere-mica);
-}
-
-.layout-3-4 {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: var(--spatiere-mica);
-}
-
-.layout5-6-7 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--spatiere-mica);
-}
-
-.layout-1,
-.layout-2,
-.layout-3,
-.layout-4,
-.layout-5,
-.layout-6,
-.layout-7,
-.layout-8 {
-    background-color: var(--background-color);
-    border: 2px solid var(--border-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+main.container > div {
+    border: 3px solid var(--border-color);
     padding: var(--padding-text);
-    text-align: center;
+    transition: border-color 0.3s ease;
 }
 
+.item1 {
+    grid-area: item1;
+}
+.item2 {
+    grid-area: item2;
+}
+.item3 {
+    grid-area: item3;
+}
+.item4 {
+    grid-area: item4;
+}
+.item5 {
+    grid-area: item5;
+}
+.item6 {
+    grid-area: item6;
+}
+.item7 {
+    grid-area: item7;
+}
+.item8 {
+    grid-area: item8;
+}
+
+/* ===================== IFRAME CONTAINER ===================== */
 .container-iframe {
     display: flex;
     flex-direction: column-reverse;
-    width: 560px;
-    justify-content: center;
-    margin: 0 auto;
+    width: 70%;
+    margin: var(--spatiere-medie) auto;
 }
 
 .taburi-iframe {
@@ -139,33 +169,34 @@ main.main-pagina-1 {
     justify-content: space-between;
 }
 
-.layout-8 .container-iframe .taburi-iframe a {
+.container-iframe .taburi-iframe a {
     width: 50px;
     height: 50px;
-    border: 4px double black;
+    border: 5px double var(--border-color);
     border-bottom-left-radius: 25%;
     border-bottom-right-radius: 25%;
     background: radial-gradient(circle, var(--color4), var(--color5));
     text-decoration: none;
     font-weight: bold;
     padding: 10px;
-    color: black;
+    color: var(--culoare-fundal-header);
     transition: background 1s ease, color 1s ease;
 }
 
-.layout-8 .container-iframe .taburi-iframe a:hover {
+.container-iframe .taburi-iframe a:hover {
     background: var(--color4);
     color: white;
 }
 
+/* ===================== BACK TO TOP LINK ===================== */
 #link-top {
     position: fixed;
     bottom: 20px;
     right: 10px;
     z-index: 1000;
     cursor: pointer;
-    transition: background 0.5s ease, border 0.5s ease, opacity 0.5s ease;
     opacity: 0.5;
+    transition: background 0.5s ease, border 0.5s ease, opacity 0.5s ease;
 }
 
 #link-top:hover {
@@ -179,7 +210,7 @@ main.main-pagina-1 {
     width: 50px;
     height: 50px;
     background: white;
-    border: 2px solid black;
+    border: 2px solid var(--border-color);
     transform: rotate(45deg);
     transition: background 0.5s ease, border 0.5s ease;
 }
@@ -191,11 +222,11 @@ main.main-pagina-1 {
 
 #link-top .rotated-content #triunghi {
     content: '';
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 25px solid gray;
+    border-bottom: 25px solid var(--border-color);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     transform: rotate(-45deg);
@@ -203,7 +234,7 @@ main.main-pagina-1 {
 }
 
 #link-top:hover .rotated-content #triunghi {
-    border-bottom-color: black;
+    border-bottom-color: var(--culoare-fundal-header);
 }
 
 #link-top::after {
@@ -212,87 +243,242 @@ main.main-pagina-1 {
     bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
-    background: black;
+    background: var(--culoare-fundal-header);
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 #link-top:hover::after {
     opacity: 1;
-    transform: translateX(-50%);
 }
 
+/* ===================== TABLE STYLES ===================== */
 .table-container {
     overflow-x: auto;
-    margin: 20px 0;
+    margin: var(--spatiere-medie) 0;
+    padding: var(--padding-text);
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 0 auto;
-    font-size: 16px;
-    text-align: center;
+    width: 100%;
+    min-width: 600px;
+    font-family: inherit;
+    transition: all 0.3s ease-in-out;
 }
 
 caption {
     caption-side: bottom;
     font-weight: bold;
-    margin-top: 10px;
+    font-size: 1.1rem;
+    padding: 0.5em;
+    margin-top: var(--spatiere-mica);
+    color: var(--culoare-fundal-header);
 }
 
-thead th {
-    background-color: #2c3e50;
-    color: white;
-    padding: 10px;
-    border: 2px solid #34495e;
+thead tr {
+    border-bottom: 3px solid var(--culoare-border-thead);
 }
 
-tbody td {
-    padding: 10px;
-    border: 1px solid #34495e;
+tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--culoare-border-standard);
 }
 
-tfoot td {
-    background-color: #2c3e50;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    border: 2px solid #34495e;
+tfoot tr {
+    border-top: 3px solid var(--culoare-border-tfoot);
 }
 
-tbody tr:nth-child(even) td {
-    background-color: #34495e;
-    color: white;
+td,
+th {
+    padding: 0.75em;
+    border-right: 1px solid var(--culoare-border-standard);
 }
 
-tbody tr:nth-child(odd) td {
-    background-color: #2c3e50;
-    color: white;
+td:last-child,
+th:last-child {
+    border-right: none;
 }
 
-tbody td:nth-child(odd) {
-    border-right: 2px solid #2c3e50;
+tbody tr td:nth-child(even) {
+    border-right: 2px solid var(--culoare-c1);
 }
 
-tbody td:nth-child(even) {
-    border-right: 2px solid #34495e;
+tbody tr td:nth-child(odd) {
+    border-right: 2px solid var(--culoare-c2);
 }
 
-thead {
-    border-bottom: 3px solid #34495e;
-}
-
-tfoot {
-    border-top: 3px solid #34495e;
+tbody tr {
+    position: relative;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease;
 }
 
 tbody tr:hover {
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
-    transition: box-shadow 0.5s ease;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #e8f8ee;
+}
+
+/* ===================== MEDIA QUERIES ===================== */
+@media (max-width: 1000px) {
+    body {
+        font-size: medium;
+        padding: 0 var(--spatiere-medie);
+    }
+
+    main.container {
+        grid-template-areas:
+            'item1 item1'
+            'item2 item2'
+            'item3 item3'
+            'item4 item4'
+            'item5 item5'
+            'item6 item6'
+            'item7 item7'
+            'item8 item8';
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        font-size: small;
+        padding: 0 var(--spatiere-mica);
+    }
+
+    main.container {
+        grid-template-areas:
+            'item1'
+            'item2'
+            'item3'
+            'item4'
+            'item5'
+            'item6'
+            'item7'
+            'item8';
+        grid-template-columns: 1fr;
+    }
+
+    * {
+        animation: none !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
+
+/* ===================== PRINT STYLES ===================== */
+@media print {
+    /* GENERAL RESET PENTRU PRINT */
+    * {
+        background: none !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* MARGINI ALTERNATIVE STÂNGA / DREAPTA */
+    @page :left {
+        margin-left: 2.5cm;
+        margin-right: 0.5cm;
+    }
+
+    @page :right {
+        margin-left: 0.5cm;
+        margin-right: 2.5cm;
+    }
+
+    /* ASCUNDE ELEMENTELE MEDIA ȘI LINKUL DE ÎNTOARCERE SUS */
+    img,
+    iframe,
+    video,
+    .video-responsive,
+    .container-iframe,
+    #link-top,
+    .taburi-iframe,
+    .container-iframe + * {
+        display: none !important;
+    }
+
+    /* BANNERUL SUS PE PRIMA PAGINĂ */
+    header {
+        width: 80%;
+        margin: 0 auto;
+        border: 2px dotted black;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        page-break-after: avoid;
+    }
+
+    /* ASCUNDE NAVIGAȚIA */
+    #navigatie {
+        display: none !important;
+    }
+
+    /* GRID -> BLOCK */
+    main.container {
+        display: block !important;
+    }
+
+    main.container > div {
+        display: block;
+        width: 100%;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    /* LINKURI CA TEXT NORMAL */
+    a,
+    a:visited,
+    a:hover {
+        text-decoration: none !important;
+        color: black !important;
+    }
+
+    /* H1 CU STILURI SPECIFICE */
+    h1 {
+        font-size: 2.5em;
+        text-align: center;
+        text-decoration: underline;
+        margin: 30vh auto 10vh auto; /* centrare verticală aproximativă */
+        page-break-after: always;
+    }
+
+    /* PAGE BREAK ÎNAINTE DE FOOTER */
+    footer {
+        page-break-before: always;
+        text-align: center;
+    }
+
+    /* WATERMARK PE FIECARE PAGINĂ */
+    body::after {
+        content: 'Vlad Apostol'; /* Înlocuiește cu numele tău real */
+        position: fixed;
+        bottom: 1cm;
+        right: 1cm;
+        width: 100px;
+        height: 2cm;
+        border: 3px double black;
+        opacity: 0.65;
+        text-align: center;
+        line-height: 2cm;
+        font-size: 12px;
+        z-index: -1;
+    }
 }
