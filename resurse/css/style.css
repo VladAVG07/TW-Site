@@ -63,7 +63,7 @@ footer {
 
 /* ===================== MEDIA ELEMENTS ===================== */
 img,
-iframe {
+.mapa {
     width: 100%;
     max-width: 800px;
     min-width: 300px;
@@ -71,26 +71,6 @@ iframe {
     margin: var(--spatiere-mica) auto;
     border-radius: var(--border-radius);
     transition: box-shadow 0.3s ease;
-}
-
-.video-responsive {
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    transition: border-color 0.5s ease;
-}
-
-.video-responsive iframe {
-    border: 5px solid;
-    border-left-color: var(--highlights-color);
-    border-top-color: var(--highlights-color);
-    border-right-color: var(--color4);
-    border-bottom-color: var(--color4);
-}
-
-.container-iframe {
-    border: 1px solid black;
 }
 
 /* ===================== NAVIGATION ===================== */
@@ -160,13 +140,14 @@ main.container > div {
 .container-iframe {
     display: flex;
     flex-direction: column-reverse;
+    height: 600px;
     width: 70%;
-    margin: var(--spatiere-medie) auto;
 }
 
 .taburi-iframe {
     display: flex;
     justify-content: space-between;
+    margin-top: -3px;
 }
 
 .container-iframe .taburi-iframe a {
@@ -186,6 +167,20 @@ main.container > div {
 .container-iframe .taburi-iframe a:hover {
     background: var(--color4);
     color: white;
+}
+
+.video-responsive {
+    border: 5px solid;
+    border-left-color: var(--color4);
+    border-top-color: var(--color4);
+    border-bottom-color: var(--highlights-color);
+    border-right-color: var(--highlights-color);
+    flex: 1;
+    display: flex;
+}
+
+.video-responsive > iframe {
+    flex: 1;
 }
 
 /* ===================== BACK TO TOP LINK ===================== */
@@ -340,6 +335,10 @@ tbody tr:hover {
             'item7 item7'
             'item8 item8';
         grid-template-columns: 1fr 1fr;
+    }
+
+    .taburi-iframe a {
+        font-size: small;
     }
 }
 

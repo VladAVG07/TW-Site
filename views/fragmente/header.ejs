@@ -1,22 +1,52 @@
-<header>
-    <h1>Site Sali Fitness si Magazin</h1>
+<header class="c1" id="titlu">
+    <h1>Site sali Fitness si Magazin</h1>
     <nav>
-        <div id="navigatie">
-            <ul class="menu">
-                <li>
-                    <input type="checkbox" id="submenu-toggle-1" />
-                    <label for="submenu-toggle-1">Acasa</label>
-                    <ul class="submenu">
-                        <li><a href="#introducere">Introducere</a></li>
-                        <li>
-                            <a href="#intrebari">Intrebari frecvente</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="/despre">Abonamente</a></li>
-                <li><a href="#subsectiune2">Nutritie</a></li>
-                <li><a href="#subsectiune3">Imbracaminte</a></li>
-            </ul>
-        </div>
+        <label id="hamburger" for="ch-menu">
+            <h1>meniu</h1>
+            <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu" />
+        </label>
+        <input id="ch-menu" type="checkbox" />
+        <ul class="meniu">
+            <li>
+                <div class="text-icon" id="acasa">Acasa</div>
+                <div class="imag-icon" id="acasa-mediu">
+                    <span class="fas fa-regular fa-house"></span>
+                </div>
+                <ul>
+                    <li><a href="/index#welcome">Bine ati venit</a></li>
+                    <li><a href="/index#promotii">Promotii</a></li>
+                    <li><a href="/index#anunturi">Anunturi</a></li>
+                    <li><a href="/index#produse">Oferta</a></li>
+                    <li><a href="/index#orar">Orar</a></li>
+                    <li><a href="/index#index-intrebari">Întrebări</a></li>
+                    <li><a href="/index#retete">Rețete</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="text-icon"><a href="#">Inregistrare</a></div>
+                <div class="imag-icon">
+                    <span class="fas fa-solid fa-book"></span>
+                </div>
+            </li>
+            <li>
+                <div>Despre</div>
+                <ul>
+                    <li><a href="/despre#prezentare">Prezentare</a></li>
+                    <li><a href="/despre#istoric">Istoric</a></li>
+                    <li><a href="/despre#motivatie">Motivatie</a></li>
+                    <li><a href="/despre#galerie">Galerie</a></li>
+                </ul>
+            </li>
+            <li>
+                <div>Produse</div>
+                <ul>
+                    <li><a href="http://www.google.com">Toate</a></li>
+                    <li><a href="/produse?tip=cofetarie">Prajituri</a></li>
+                    <li><a href="/produse?tip=gelaterie">Torturi</a></li>
+                    <li><a href="/produse?tip=patiserie">Patiserie</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </nav>
 </header>

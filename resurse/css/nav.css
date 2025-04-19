@@ -1,97 +1,224 @@
-header {
-    background-color: rgb(19, 112, 10);
-    padding: 10px 0;
+#hamburger,
+#ch-menu {
+    display: none;
 }
 
-header,
-header nav #navigatie ul li a,
-header nav #navigatie ul .submenu li a,
-.menu-icon {
-    font-family: 'Tektur', sans-serif;
-    font-weight: bold;
+nav {
+    background-color: var(--culoare-deschisa);
+    --inaltime-meniu: 30px;
+    --latime-buton: 150px;
+    height: var(--inaltime-meniu);
+    position: sticky;
+    top: 0;
 }
 
-header nav #navigatie {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 10px;
+ul.meniu li div.imag-icon {
+    display: none;
 }
 
-header nav #navigatie ul {
-    list-style: none;
-    margin: 0;
+ul.meniu ul {
+    display: none;
     padding: 0;
+}
+ul.meniu {
     display: flex;
-    gap: 20px;
-    position: relative;
+    list-style-type: none;
+    padding: 0;
 }
 
-header nav #navigatie ul li {
-    position: relative;
-}
-
-header nav #navigatie ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
+ul.meniu li {
+    width: var(--latime-buton);
+    height: var(--inaltime-meniu);
+    border: 1px solid var(--culoare-background);
+    box-sizing: border-box;
+    text-align: center;
     font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.3s ease, background-color 0.3s ease;
+    line-height: var(--inaltime-meniu);
+    transition: all 1s linear;
 }
 
-header nav #navigatie ul li a:hover {
-    color: black;
-    background-color: white;
-    border-radius: 5px;
+ul.meniu li:hover {
+    background-color: var(--culoare-background);
 }
 
-header nav #navigatie ul .submenu {
+ul.meniu li:hover ul {
     display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-color: rgb(19, 112, 10);
-    padding: 10px 0;
-    list-style: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-color: var(--culoare-deschisa);
+    position: relative;
+    list-style-type: none;
+    left: -1px;
 }
 
-header nav #navigatie ul .submenu li {
-    padding: 5px 20px;
-}
-
-header nav #navigatie ul .submenu li a {
+ul.meniu li:hover > a,
+ul.meniu li:hover > div {
     color: white;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 5px 10px;
-    display: block;
 }
 
-header nav #navigatie ul .submenu li a:hover {
-    background-color: white;
+ul.meniu a,
+ul.meniu div {
     color: black;
-    border-radius: 5px;
+    text-decoration: none;
+    transition: all 1s linear;
+    display: block;
+    height: 100%;
+    cursor: pointer;
 }
 
-header nav #navigatie ul li:hover > .submenu {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+ul.meniu ul {
+    animation-name: animatie_submeniu;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-duration: 0.75s;
+    animation-fill-mode: forwards;
+    transform-origin: 50% 0;
 }
 
-@media (min-width: 701px) {
-    #menu-toggle,
-    .menu li input[type='checkbox'],
-    .menu-icon {
+@keyframes animatie_submeniu {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(100%);
+    }
+}
+
+@media (max-width: 700px) {
+    #hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    #navigatie {
+        position: relative;
+    }
+
+    header {
+        position: relative;
+    }
+
+    #menu-toggle {
         display: none;
+    }
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1000;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgb(19, 112, 10);
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #menu-toggle:checked ~ nav {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    .menu > li {
+        text-align: center;
+        margin: 10px 0;
+        position: relative;
+    }
+
+    .menu > li > a,
+    .menu > li > label {
+        color: white !important;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 15px;
+        display: block;
+        text-decoration: none;
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .menu > li > a:hover,
+    .menu > li > label:hover {
+        color: black !important;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    .submenu {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        list-style: none;
+        margin-top: 5px;
+    }
+
+    .submenu li a {
+        color: white !important;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 8px 25px;
+        display: block;
+        text-decoration: none;
+    }
+
+    .submenu li a:hover {
+        background-color: white;
+        color: black !important;
+        border-radius: 5px;
+    }
+
+    .menu li input[type='checkbox'] {
+        display: none;
+    }
+
+    .menu li input[type='checkbox']:checked ~ .submenu {
+        display: flex;
+    }
+
+    #menu-toggle:checked + .menu-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #menu-toggle:checked + .menu-icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked + .menu-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .menu a,
+    .menu label {
+        color: white !important;
     }
 }
