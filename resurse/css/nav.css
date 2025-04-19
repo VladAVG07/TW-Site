@@ -1,224 +1,120 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 20px;
+    height: 60px;
+    margin-bottom: 2px;
+}
+
 #hamburger,
 #ch-menu {
     display: none;
 }
 
-nav {
-    background-color: var(--culoare-deschisa);
-    --inaltime-meniu: 30px;
-    --latime-buton: 150px;
-    height: var(--inaltime-meniu);
-    position: sticky;
-    top: 0;
-}
-
-ul.meniu li div.imag-icon {
-    display: none;
-}
-
-ul.meniu ul {
-    display: none;
-    padding: 0;
-}
-ul.meniu {
+nav > ul {
+    list-style: none;
     display: flex;
-    list-style-type: none;
-    padding: 0;
-}
-
-ul.meniu li {
-    width: var(--latime-buton);
-    height: var(--inaltime-meniu);
-    border: 1px solid var(--culoare-background);
-    box-sizing: border-box;
-    text-align: center;
-    font-weight: bold;
-    line-height: var(--inaltime-meniu);
-    transition: all 1s linear;
-}
-
-ul.meniu li:hover {
-    background-color: var(--culoare-background);
-}
-
-ul.meniu li:hover ul {
-    display: block;
-    background-color: var(--culoare-deschisa);
-    position: relative;
-    list-style-type: none;
-    left: -1px;
-}
-
-ul.meniu li:hover > a,
-ul.meniu li:hover > div {
-    color: white;
-}
-
-ul.meniu a,
-ul.meniu div {
-    color: black;
-    text-decoration: none;
-    transition: all 1s linear;
-    display: block;
+    flex-direction: row;
     height: 100%;
-    cursor: pointer;
 }
 
-ul.meniu ul {
-    animation-name: animatie_submeniu;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-    animation-duration: 0.75s;
-    animation-fill-mode: forwards;
-    transform-origin: 50% 0;
+li {
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    transition: box-shadow 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
 }
 
-@keyframes animatie_submeniu {
-    0% {
-        opacity: 0;
-        transform: scaleY(0);
+li:hover {
+    box-shadow: inset 0 0 10px white;
+}
+
+ul li > ul {
+    display: none;
+}
+
+nav .imag-icon {
+    margin-bottom: 2px;
+    margin-right: 10px;
+}
+
+li:hover > ul {
+    display: block;
+    position: absolute;
+    top: -2%;
+    left: -1%;
+    background-color: #1b5e20; /* or any desired background */
+    padding: 10px;
+    margin-top: 60px; /* adjust based on nav height */
+    z-index: 1000;
+}
+
+li > ul > li {
+    display: block;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+li > ul > li:hover {
+    background-color: #222; /* for hover effect on dropdown items */
+}
+
+@media screen and (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
     }
-    100% {
-        opacity: 1;
-        transform: scaleY(100%);
-    }
-}
 
-@media (max-width: 700px) {
     #hamburger {
         display: block;
         cursor: pointer;
+        margin: 10px;
     }
 
-    #navigatie {
-        position: relative;
+    #hamburger img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
     }
 
-    header {
-        position: relative;
+    nav > ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
     }
 
-    #menu-toggle {
+    .imag-icon {
         display: none;
     }
 
-    .menu-icon {
+    /* Show menu when checkbox is checked */
+    #ch-menu:checked + ul {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        z-index: 1000;
     }
 
-    .menu-icon span {
-        display: block;
+    li {
         width: 100%;
-        height: 3px;
-        background-color: white;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        padding: 10px;
+        border-top: 1px solid #333;
     }
 
-    nav {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: rgb(19, 112, 10);
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+    ul li > ul {
+        position: static;
+        margin-top: 0;
+        padding-left: 20px;
     }
 
-    #menu-toggle:checked ~ nav {
+    li:hover > ul {
+        transform: none;
         opacity: 1;
-        transform: translateY(0);
         pointer-events: auto;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: column;
-        padding: 20px 0;
-        list-style: none;
-        margin: 0;
-    }
-
-    .menu > li {
-        text-align: center;
-        margin: 10px 0;
-        position: relative;
-    }
-
-    .menu > li > a,
-    .menu > li > label {
-        color: white !important;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px 15px;
-        display: block;
-        text-decoration: none;
-        transition: color 0.3s ease, background-color 0.3s ease;
-    }
-
-    .menu > li > a:hover,
-    .menu > li > label:hover {
-        color: black !important;
-        background-color: white;
-        border-radius: 5px;
-    }
-
-    .submenu {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 10px 0;
-        list-style: none;
-        margin-top: 5px;
-    }
-
-    .submenu li a {
-        color: white !important;
-        font-size: 16px;
-        font-weight: normal;
-        padding: 8px 25px;
-        display: block;
-        text-decoration: none;
-    }
-
-    .submenu li a:hover {
-        background-color: white;
-        color: black !important;
-        border-radius: 5px;
-    }
-
-    .menu li input[type='checkbox'] {
-        display: none;
-    }
-
-    .menu li input[type='checkbox']:checked ~ .submenu {
-        display: flex;
-    }
-
-    #menu-toggle:checked + .menu-icon span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    #menu-toggle:checked + .menu-icon span:nth-child(2) {
-        opacity: 0;
-    }
-
-    #menu-toggle:checked + .menu-icon span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    .menu a,
-    .menu label {
-        color: white !important;
     }
 }
