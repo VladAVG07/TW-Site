@@ -1,30 +1,26 @@
-<header class="c1" id="titlu">
-    <h1>Site sali Fitness si Magazin</h1>
+<header>
     <nav>
-        <label id="hamburger" for="ch-menu">
-            <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu" />
-        </label>
-        <input id="ch-menu" type="checkbox" />
-
-        <ul class="meniu">
-            <li>
-                <!-- Toggle for submenu -->
-                <input
-                    type="checkbox"
-                    id="sub-menu-toggle"
-                    class="sub-toggle"
-                />
-                <label for="sub-menu-toggle">Acasa</label>
-
-                <!-- Submenu -->
-                <ul>
-                    <li><a href="#linkTabel">Tabel produse</a></li>
-                    <li><a href="#item8">Informatii generale</a></li>
-                </ul>
-            </li>
-            <li><a href="#Despre">Despre</a></li>
-            <li><a href="#Produse">Produse</a></li>
-            <li><a href="#Contact">Contact</a></li>
+        <ul class="nav-bar">
+            <input type="checkbox" id="check" />
+            <span class="menu">
+                <li>
+                    <i class="fas fa-home"></i>
+                    <a href="#">Acasa</a>
+                    <ul class="submenu">
+                        <li><a href="#linkTabel">Tabel</a></li>
+                        <li><a href="#item8">Informatii generale</a></li>
+                    </ul>
+                </li>
+                <li><a href="/despre">Despre</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/produse">Produse</a></li>
+                <label for="check" class="close-menu"
+                    ><i class="fas fa-times"></i
+                ></label>
+            </span>
+            <label for="check" class="open-menu"
+                ><i class="fas fa-bars"></i
+            ></label>
         </ul>
     </nav>
 </header>

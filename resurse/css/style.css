@@ -30,16 +30,17 @@
 body {
     font-family: 'Tektur';
     font-size: large;
-    display: flex;
-    flex-direction: column;
     margin: 0 auto;
-    padding: 0 var(--spatiere-mare);
+    padding: 0;
+    max-width: 100%;
     background-color: var(--culoare-fundal-main);
 }
 
-/* ===================== LAYOUT COMPONENTS ===================== */
+.content-wrapper {
+    padding: 0 var(--spatiere-mare); /* Move body padding to this container */
+}
 
-header,
+/* ===================== LAYOUT COMPONENTS ===================== */
 footer,
 section {
     background-color: white;
@@ -54,6 +55,12 @@ header {
     background-color: var(--culoare-fundal-header);
     color: white;
     text-align: center;
+    width: 100%;
+    border-radius: 0; /* Remove border radius */
+    box-shadow: var(--box-shadow);
+    padding: var(--padding-text);
+    margin: 0 0 var(--margin-top-sectiuni) 0;
+    box-sizing: border-box;
 }
 
 footer {
@@ -103,7 +110,7 @@ main.container {
         'item8 item8 item8 item8';
     gap: var(--spatiere-mica);
     grid-template-columns: repeat(4, 1fr);
-    margin: var(--spatiere-medie) 0;
+    /* margin: var(--spatiere-medie) 0; */
 }
 
 main.container > div {
@@ -322,6 +329,10 @@ tbody tr:hover {
 @media (max-width: 1000px) {
     body {
         font-size: medium;
+        /* padding: 0 var(--spatiere-medie); */
+    }
+
+    .content-wrapper {
         padding: 0 var(--spatiere-medie);
     }
 
@@ -346,7 +357,10 @@ tbody tr:hover {
 @media (max-width: 700px) {
     body {
         font-size: small;
-        padding: 0 var(--spatiere-mica);
+        /* padding: 0 var(--spatiere-mica); */
+    }
+    .content-wrapper {
+        padding: 0 var(--spatiere-medie);
     }
 
     main.container {
