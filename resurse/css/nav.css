@@ -1,203 +1,237 @@
 .nav-bar {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    position: relative;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    height: 100%;
+	width: 100%;
+	max-width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	height: 100%;
 }
 
 header {
-    background-color: var(--culoare-fundal-header);
-    color: white;
-    text-align: center;
-    width: 100%;
-    border-radius: 0;
-    box-shadow: var(--box-shadow);
-    padding: 0;
-    margin: 0 0 10px 0;
-    box-sizing: border-box;
-    height: 60px;
+	background-color: var(--culoare-fundal-header);
+	color: white;
+	text-align: center;
+	width: 100%;
+	border-radius: 0;
+	box-shadow: var(--box-shadow);
+	padding: 0;
+	margin: 0 0 10px 0;
+	box-sizing: border-box;
+	height: 60px;
 }
 
 nav {
-    height: 100%;
+	height: 100%;
 }
 
 .menu {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    align-items: center;
+	display: flex;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	align-items: center;
 }
 
 .menu li {
-    padding-left: 30px;
-    box-sizing: border-box;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    align-items: center;
+	padding-left: 30px;
+	box-sizing: border-box;
+	position: relative;
+	transition: all 0.3s ease;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
 
 .menu li:hover {
-    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
-    animation: inner-glow 0.5s forwards;
+	box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
+	animation: inner-glow 0.5s forwards;
 }
 
 @keyframes inner-glow {
-    0% {
-        box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
-    }
-    100% {
-        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
-    }
+	0% {
+		box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.2);
+	}
+	100% {
+		box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+	}
 }
 
 .menu li a {
-    font-weight: bold;
-    display: flex;
-    text-decoration: none;
-    text-align: center;
-    transition: 0.15s ease-in-out;
-    position: relative;
-    text-transform: uppercase;
-    padding: 15px;
-    height: 100%;
-    align-items: center;
+	font-weight: bold;
+	display: flex;
+	text-decoration: none;
+	text-align: center;
+	transition: 0.15s ease-in-out;
+	position: relative;
+	text-transform: uppercase;
+	padding: 15px;
+	height: 100%;
+	align-items: center;
 }
 
 .menu li i {
-    margin-right: 5px;
+	margin-right: 5px;
 }
 
 .submenu {
-    background-color: #1b5e20;
-    position: absolute;
-    top: 100%;
-    /* left: 20; */
-    margin-left: -30px;
-    text-align: left;
-    display: none;
-    min-width: 150px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    padding: 0;
+	background-color: #1b5e20;
+	position: absolute;
+	top: 100%;
+	/* left: 20; */
+	margin-left: -30px;
+	text-align: left;
+	display: none;
+	min-width: 150px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	padding: 0;
 }
 
 .submenu li {
-    padding: 0;
-    width: 100%;
-    display: block;
-    height: auto;
+	padding: 0;
+	width: 100%;
+	display: block;
+	height: auto;
 }
 
 .submenu li a {
-    padding: 10px 15px;
-    display: block;
-    width: 100%;
-    text-align: left;
-    height: auto;
+	padding: 10px 15px;
+	display: block;
+	width: 100%;
+	text-align: left;
+	height: auto;
 }
 
 li:hover > .submenu {
-    display: block;
+	display: block;
 }
 
 .open-menu,
 .close-menu {
-    position: absolute;
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: none;
+	position: absolute;
+	cursor: pointer;
+	font-size: 1.5rem;
+	display: none;
 }
 
 .open-menu {
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
 }
 
 .close-menu {
-    top: 10px;
-    right: 20px;
+	top: 10px;
+	right: 20px;
 }
 
 #check {
-    display: none;
+	display: none;
 }
 
 @media (max-width: 700px) {
-    .menu {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        width: 70%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        z-index: 100;
-        background-color: #1b5e20;
-        transition: all 0.3s ease-in-out;
-        padding-top: 60px;
-        overflow-y: auto;
-    }
+	.menu {
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		width: 70%;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		z-index: 100;
+		background-color: #1b5e20;
+		transition: all 0.3s ease-in-out;
+		padding-top: 60px;
+		overflow-y: auto;
+	}
 
-    .menu li {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: block; /* important */
-    }
+	.menu li {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		display: block; /* important */
+	}
 
-    .menu li a {
-        padding: 10px 15px;
-        font-size: 0.9em;
-        width: 100%;
-        display: block; /* so it stacks vertically */
-    }
+	.menu li a {
+		padding: 10px 15px;
+		font-size: 0.9em;
+		width: 100%;
+		display: block; /* so it stacks vertically */
+	}
 
-    .submenu {
-        position: static;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-        background-color: rgba(255, 255, 255, 0.05);
-        display: block;
-        padding-left: 20px;
-    }
+	.submenu {
+		position: static;
+		width: 100%;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-in-out;
+		background-color: rgba(255, 255, 255, 0.05);
+		display: block;
+		padding-left: 20px;
+	}
 
-    li:hover > .submenu {
-        max-height: 500px; /* or use auto with JS for smoother expanding */
-    }
+	li:hover > .submenu {
+		max-height: 500px; /* or use auto with JS for smoother expanding */
+	}
 
-    .submenu li {
-        border-bottom: none;
-    }
+	.submenu li {
+		border-bottom: none;
+	}
 
-    .submenu li a {
-        padding: 8px 15px;
-        font-size: 0.85em;
-        display: block;
-        width: 100%;
-    }
+	.submenu li a {
+		padding: 8px 15px;
+		font-size: 0.85em;
+		display: block;
+		width: 100%;
+	}
 
-    .open-menu,
-    .close-menu {
-        display: block;
-    }
+	.open-menu,
+	.close-menu {
+		display: block;
+	}
 
-    #check:checked ~ .menu {
-        right: 0;
-    }
+	#check:checked ~ .menu {
+		right: 0;
+	}
+}
+
+/* Theme toggle styles */
+.theme-toggle-wrapper {
+	margin-right: 20px;
+	z-index: 101;
+}
+
+#theme-toggle {
+	background: transparent;
+	border: none;
+	color: white;
+	padding: 8px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+	transform: scale(1.1);
+}
+
+#theme-toggle i {
+	font-size: 1.2rem;
+}
+
+/* Update media query to handle theme toggle on mobile */
+@media (max-width: 700px) {
+	/* ...existing mobile styles... */
+
+	.theme-toggle-wrapper {
+		position: fixed;
+		top: 15px;
+		right: 60px;
+	}
 }

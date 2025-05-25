@@ -9,9 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bootstrap": "^5.3.6",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "nodemon": "^3.1.9",
-    "sass": "^1.86.3"
+    "pg": "^8.16.0",
+    "sass": "^1.89.0"
   }
 }

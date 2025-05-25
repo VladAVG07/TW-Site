@@ -1,0 +1,75 @@
+// Custom color variables
+$primary: #1b5e20;
+$secondary: #388e3c;
+$success: #4caf50;
+$info: #81c784;
+$warning: #ffeb3b;
+$danger: #f44336;
+$light: #e8f5e9;
+$dark: #1b5e20;
+
+// Custom screen breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 850px,
+	// Modified medium breakpoint
+	lg: 1100px,
+	// Modified large breakpoint
+	xl: 1200px,
+	xxl: 1400px,
+);
+
+// Custom container max-widths
+$container-max-widths: (
+	sm: 540px,
+	md: 820px,
+	// Modified
+	lg: 1060px,
+	// Modified
+	xl: 1140px,
+	xxl: 1320px,
+);
+
+// Custom border radius
+$border-radius: 1rem;
+$border-radius-sm: 0.8rem;
+$border-radius-lg: 1.2rem;
+$border-radius-pill: 50rem;
+
+$form-range-thumb-width: 1.5rem;
+$form-range-thumb-bg: $primary;
+$form-range-track-bg: lighten($primary, 30%);
+
+// Button padding
+$btn-padding-y: 0.375rem;
+$btn-padding-x: 0.75rem;
+
+// Custom typography
+$font-family-base: 'Tektur', system-ui, -apple-system, sans-serif;
+$font-size-base: 0.875rem; // Reduced from 1rem to 0.875rem (14px)
+$h1-font-size: $font-size-base * 2; // Reduced from 2.5
+$h2-font-size: $font-size-base * 1.75; // Reduced from 2
+$h3-font-size: $font-size-base * 1.5; // Reduced from 1.75
+$h4-font-size: $font-size-base * 1.25; // Reduced from 1.5
+$h5-font-size: $font-size-base * 1.1; // Reduced from 1.25
+$h6-font-size: $font-size-base; // Kept the same
+
+// Additional customization
+$enable-rounded: true;
+$enable-shadows: true;
+$box-shadow: 0 0.5rem 1rem rgba($dark, 0.15);
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Custom theme classes
+.theme-light {
+	background-color: $light;
+	color: $dark;
+}
+
+.theme-dark {
+	background-color: $dark;
+	color: $light;
+}
