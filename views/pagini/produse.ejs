@@ -147,8 +147,17 @@
 			<section id="produse">
 				<h2>Produse</h2>
 				<div class="grid-produse">
-					<% for( let prod of locals.produse) { %>
-					<article class="produs">
+					<% for(let prod of locals.produse) { %>
+					<article
+						class="produs"
+						data-nume="<%- prod.nume %>"
+						data-pret="<%- prod.pret %>"
+						data-subcategorie="<%- prod.subcategorie %>"
+						data-specificatie="<%- prod.specificatie_numerica %>"
+						data-categorie="<%- prod.categorie_mare %>"
+						data-culoare="<%- prod.culoare %>"
+						data-etichete="<%- prod.etichete %>"
+						data-img="/resurse/imagini/produse/<%- prod.imagine %>">
 						<h3 class="nume">
 							Nume:
 							<a href="/produs/<%-prod.id %>">
@@ -207,10 +216,33 @@
 								autocomplete="off" />
 						</label>
 					</article>
-					<% }%>
+					<% } %>
 				</div>
 			</section>
 		</main>
+		<!-- Modal -->
+		<div
+			class="modal fade"
+			id="produsModal"
+			tabindex="-1"
+			aria-labelledby="produsModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="produsModalLabel"></h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Închide"></button>
+					</div>
+					<div class="modal-body" id="produsModalBody">
+						<!-- Details will be injected here -->
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<%- include("../fragmente/footer") %>
 	</body>

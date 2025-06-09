@@ -1,4 +1,7 @@
 window.onload = function () {
+	function normalizeDiacritics(str) {
+		return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+	}
 	const btn = document.getElementById('filtrare');
 	btn.onclick = filtrareProduse;
 
@@ -8,10 +11,9 @@ window.onload = function () {
 			document.querySelectorAll('input[name="culori"]:checked')
 		).map((checkbox) => checkbox.value);
 
-		let inpNume = document
-			.getElementById('inp-nume')
-			.value.trim()
-			.toLowerCase();
+		let inpNume = normalizeDiacritics(
+			document.getElementById('inp-nume').value.trim().toLowerCase()
+		);
 
 		let vectRadio = document.getElementsByName('gr_rad');
 
@@ -55,9 +57,7 @@ window.onload = function () {
 				.toLowerCase()
 				.split(',');
 
-			let cond7 =
-				selectedValues.length === 0 ||
-				selectedValues.some((val) => etichete.includes(val));
+			let cond7 = selectedValues.some((val) => etichete.includes(val));
 
 			let culoare = prod
 				.getElementsByClassName('val-culoare')[0]
@@ -65,12 +65,13 @@ window.onload = function () {
 
 			let cond6 =
 				checkedColors.length === 0 || checkedColors.includes(culoare);
-
-			let nume = prod
-				.getElementsByClassName('val-nume')[0]
-				.innerHTML.trim()
-				.toLowerCase();
-			let cond1 = nume.startsWith(inpNume);
+			let nume = normalizeDiacritics(
+				prod
+					.getElementsByClassName('val-nume')[0]
+					.innerHTML.trim()
+					.toLowerCase()
+			);
+			let cond1 = nume.includes(inpNume);
 
 			let calorii = parseInt(
 				prod
@@ -94,7 +95,7 @@ window.onload = function () {
 
 			let cond5 = calorii <= inpNumericCalorii;
 
-			if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7) {
+			if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && !cond7) {
 				prod.style.display = 'block';
 			}
 		}
@@ -196,4 +197,52 @@ window.onload = function () {
 			}
 		}
 	};
+
+	// Bootstrap 5 modal instance
+	let produsModal = new bootstrap.Modal(
+		document.getElementById('produsModal')
+	);
+
+	document.querySelectorAll('.produs').forEach((card) => {
+		card.addEventListener('click', function (e) {
+			// Prevent click on checkbox or link from opening modal
+			if (
+				e.target.tagName === 'INPUT' ||
+				e.target.tagName === 'A' ||
+				e.target.closest('button')
+			)
+				return;
+
+			// Get data attributes
+			const nume = this.getAttribute('data-nume');
+			const pret = this.getAttribute('data-pret');
+			const subcategorie = this.getAttribute('data-subcategorie');
+			const specificatie = this.getAttribute('data-specificatie');
+			const categorie = this.getAttribute('data-categorie');
+			const culoare = this.getAttribute('data-culoare');
+			const etichete = this.getAttribute('data-etichete');
+			const img = this.getAttribute('data-img');
+
+			// Set modal content
+			document.getElementById('produsModalLabel').textContent = nume;
+			document.getElementById('produsModalBody').innerHTML = `
+            <div class="row">
+                <div class="col-md-5 text-center">
+                    <img src="${img}" alt="imagine ${nume}" class="img-fluid rounded mb-3"/>
+                </div>
+                <div class="col-md-7">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Pret:</strong> ${pret}</li>
+                        <li class="list-group-item"><strong>Subcategorie:</strong> ${subcategorie}</li>
+                        <li class="list-group-item"><strong>Specificatie numerica:</strong> ${specificatie}</li>
+                        <li class="list-group-item"><strong>Categorie:</strong> ${categorie}</li>
+                        <li class="list-group-item"><strong>Culoare:</strong> ${culoare}</li>
+                        <li class="list-group-item"><strong>Etichete:</strong> ${etichete}</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+			produsModal.show();
+		});
+	});
 };

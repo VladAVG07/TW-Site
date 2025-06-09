@@ -1,0 +1,44 @@
+<!-- Container pentru primele 10 imagini + spații goale -->
+<div class="galerie-grid galerie-mare">
+	<% galerie.imagini.slice(0, 10).forEach((img, i) => { %> <% if(i === 4) { %>
+	<div class="galerie-empty empty-1"></div>
+	<div class="galerie-empty empty-2"></div>
+	<% } %>
+	<figure class="galerie-item">
+		<picture>
+			<source
+				media="(max-width: 600px)"
+				srcset="resurse/imagini/galerie/small/<%= img.cale_imagine %>" />
+			<source
+				media="(max-width: 1024px)"
+				srcset="resurse/imagini/galerie/medium/<%= img.cale_imagine %>" />
+			<img
+				src="resurse/imagini/galerie/<%= img.cale_imagine %>"
+				alt="<%= img.alt || img.titlu || img.cale_imagine %>"
+				title="<%= img.descriere %>" />
+		</picture>
+		<figcaption class="index"><%= img.descriere %></figcaption>
+	</figure>
+	<% }); %>
+</div>
+
+<!-- Container pentru imaginile suplimentare, vizibil doar pe mediu și mic -->
+<div class="galerie-grid galerie-medie-mica">
+	<% galerie.imagini.slice(10).forEach((img) => { %>
+	<figure class="galerie-item extra-item">
+		<picture>
+			<source
+				media="(max-width: 600px)"
+				srcset="resurse/imagini/galerie/small/<%= img.cale_imagine %>" />
+			<source
+				media="(max-width: 1024px)"
+				srcset="resurse/imagini/galerie/medium/<%= img.cale_imagine %>" />
+			<img
+				src="resurse/imagini/galerie/<%= img.cale_imagine %>"
+				alt="<%= img.alt || img.titlu || img.cale_imagine %>"
+				title="<%= img.descriere %>" />
+		</picture>
+		<figcaption class="index"><%= img.descriere %></figcaption>
+	</figure>
+	<% }); %>
+</div>

@@ -1,0 +1,107 @@
+html,
+body {
+	margin: 0;
+	padding: 0px;
+	width: 100%;
+}
+
+.container-galerie {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.galerie-grid {
+	display: grid;
+	gap: 1rem;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* implicit pentru mediu și mic */
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Spații goale - ocupă spațiu, dar invizibile */
+.galerie-empty {
+	background: transparent;
+}
+
+/* Pe ecran mare: grid fix 4x3 */
+@media (min-width: 1025px) {
+	.galerie-grid {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(3, auto);
+		grid-auto-flow: row;
+	}
+
+	/* Spații goale poziționate în mijloc (coloanele 2 și 3, rândul 2) */
+	.galerie-empty.empty-1 {
+		grid-column: 2;
+		grid-row: 2;
+	}
+	.galerie-empty.empty-2 {
+		grid-column: 3;
+		grid-row: 2;
+	}
+}
+
+/* Itemele galeriei */
+.galerie-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	counter-increment: litera;
+}
+
+.galerie-item figcaption {
+	margin-top: 0.5rem;
+}
+
+.galerie-item .index::before {
+	content: counter(litera, lower-alpha) '. ';
+	font-weight: bold;
+}
+
+/* Pe mediu și mic: grid flexibil */
+@media (max-width: 1024px) {
+	.galerie-grid {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}
+}
+
+/* Implicit ascundem containerul cu imaginile suplimentare pe ecran mare */
+.galerie-medie-mica {
+	display: none;
+}
+
+/* Pe mediu și mic, ascundem containerul cu primele 10 + spații goale */
+@media (max-width: 1024px) {
+	.galerie-medie-mica {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1rem;
+		width: 100vw;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+}
+
+.galerie-item picture img {
+	transition: transform 1.25s ease;
+	transform-origin: center bottom; /* schimbăm originea la bază */
+}
+
+.galerie-item figcaption {
+	transition: background-color 1.25s ease, color 1.25s ease;
+}
+
+/* la hover pe figura */
+.galerie-item:hover picture img {
+	transform: scale(1.3) translateY(-15%);
+}
+
+.galerie-item:hover figcaption {
+	background-color: #004080; /* exemplu: albastru închis */
+	color: #ffdd57; /* exemplu: galben deschis */
+}

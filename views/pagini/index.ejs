@@ -1,298 +1,290 @@
 <!DOCTYPE html>
 <html lang="ro">
-    <head>
-        <title>Magazin Fitness</title>
-        <meta name="keywords" content="internet, tehnici web, HTML, taguri" />
-        <!--cuvintele cheie ale paginii; majoritatea motoarelor de căutare ignoră keywords -->
-        <meta
-            name="description"
-            content="Curs de Tehnici Web. Limbajul HTML. Taguri."
-        />
-        <%- include("../fragmente/head.ejs") %>
-    </head>
-    <body>
-        <%- include("../fragmente/header.ejs") %>
-        <div class="content-wrapper">
-            <main class="container">
-                <div class="item1">
-                    <h1>Magazin sali si echipamente fitness</h1>
-                    <figure>
-                        <picture>
-                            <source
-                                srcset="
-                                    /resurse/imagini/echipamente/image-small.jpg
-                                "
-                                media="(max-width: 480px)"
-                            />
-                            <source
-                                srcset="
-                                    /resurse/imagini/echipamente/image-medium.jpg
-                                "
-                                media="(max-width: 768px)"
-                            />
-                            <img
-                                src="/resurse/imagini/echipamente/image-large.jpg"
-                                alt="Descrierea imaginii"
-                            />
-                        </picture>
-                        <figcaption>
-                            Bine ati venit pe site-ul Sali de Fitness!
-                            <a
-                                href="/resurse/imagini/echipamente/image-large.jpg"
-                                download="logo.jpg"
-                            >
-                                Apasă aici pentru descărcare
-                            </a>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="item2">
-                    <div class="table-container">
-                        <table id="linkTabel">
-                            <caption>
-                                Top Produse Fitness Vândute
-                            </caption>
-                            <thead>
-                                <tr>
-                                    <th>Produs</th>
-                                    <th>Categorie</th>
-                                    <th>Preț</th>
-                                    <th>Rating</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Gantere Reglabile</td>
-                                    <td>Echipament</td>
-                                    <td>350 RON</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                </tr>
-                                <tr>
-                                    <td>Saltea Yoga</td>
-                                    <td>Accesorii</td>
-                                    <td>120 RON</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                </tr>
-                                <tr>
-                                    <td>Bicicletă Fitness</td>
-                                    <td>Echipament</td>
-                                    <td>1.200 RON</td>
-                                    <td>⭐⭐⭐⭐⭐</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">Abonament Lunar</td>
-                                    <td>150 RON</td>
-                                    <td>⭐⭐⭐⭐</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4">
-                                        Toate prețurile includ TVA
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
+	<head>
+		<title>Magazin Fitness</title>
+		<meta name="keywords" content="internet, tehnici web, HTML, taguri" />
+		<!--cuvintele cheie ale paginii; majoritatea motoarelor de căutare ignoră keywords -->
+		<meta
+			name="description"
+			content="Curs de Tehnici Web. Limbajul HTML. Taguri." />
+		<%- include("../fragmente/head.ejs") %>
+	</head>
+	<body>
+		<%- include("../fragmente/header.ejs") %>
+		<div class="content-wrapper">
+			<main class="container">
+				<div class="item1">
+					<h1>Magazin sali si echipamente fitness</h1>
+					<figure>
+						<picture>
+							<source
+								srcset="
+									/resurse/imagini/echipamente/image-small.jpg
+								"
+								media="(max-width: 480px)" />
+							<source
+								srcset="
+									/resurse/imagini/echipamente/image-medium.jpg
+								"
+								media="(max-width: 768px)" />
+							<img
+								src="/resurse/imagini/echipamente/image-large.jpg"
+								alt="Descrierea imaginii" />
+						</picture>
+						<figcaption>
+							Bine ati venit pe site-ul Sali de Fitness!
+							<a
+								href="/resurse/imagini/echipamente/image-large.jpg"
+								download="logo.jpg">
+								Apasă aici pentru descărcare
+							</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="item2">
+					<div class="table-container">
+						<table id="linkTabel">
+							<caption>Top Produse Fitness Vândute</caption>
+							<thead>
+								<tr>
+									<th>Produs</th>
+									<th>Categorie</th>
+									<th>Preț</th>
+									<th>Rating</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Gantere Reglabile</td>
+									<td>Echipament</td>
+									<td>350 RON</td>
+									<td>⭐⭐⭐⭐</td>
+								</tr>
+								<tr>
+									<td>Saltea Yoga</td>
+									<td>Accesorii</td>
+									<td>120 RON</td>
+									<td>⭐⭐⭐⭐</td>
+								</tr>
+								<tr>
+									<td>Bicicletă Fitness</td>
+									<td>Echipament</td>
+									<td>1.200 RON</td>
+									<td>⭐⭐⭐⭐⭐</td>
+								</tr>
+								<tr>
+									<td colspan="2">Abonament Lunar</td>
+									<td>150 RON</td>
+									<td>⭐⭐⭐⭐</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4">
+										Toate prețurile includ TVA
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
 
-                <div class="item3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Doloremque aliquam ducimus porro perferendis odio magni
-                    consequatur autem dolorem eum nobis rerum placeat nisi
-                    voluptatem saepe nesciunt qui, earum vel quod!
-                </div>
-                <div class="item4">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
-                    in voluptatibus consequuntur, dolorem incidunt voluptates
-                    asperiores deserunt fuga dignissimos, velit aut quidem
-                    temporibus consequatur illum aliquid reiciendis laboriosam
-                    maiores quod?
-                </div>
-                <div class="item5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Atque id consequatur tempore! Quasi laborum consequatur
-                    eligendi dignissimos doloribus nihil exercitationem modi
-                    nam, illo natus distinctio sed mollitia perspiciatis totam
-                    consectetur.
-                </div>
-                <div class="item6">
-                    <h2>Linkuri interne</h2>
-                    <p>
-                        <a href="#linkTabel">Sari la secțiune</a><br />
-                        <a href="#item8">Contact</a>
-                    </p>
+				<div class="item3">
+					<span class="reflex-text">
+						Acesta este un text cu reflexie
+					</span>
+				</div>
+				<div class="item4">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
+					in voluptatibus consequuntur, dolorem incidunt voluptates
+					asperiores deserunt fuga dignissimos, velit aut quidem
+					<hr class="angled-hr" />
+					temporibus consequatur illum aliquid reiciendis laboriosam
+					maiores quod?
+				</div>
+				<div class="item5">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Atque id consequatur tempore! Quasi laborum consequatur
+					eligendi dignissimos doloribus nihil exercitationem modi
+					nam, illo natus distinctio sed mollitia perspiciatis totam
+					consectetur.
+				</div>
+				<div class="item6">
+					<h2>Linkuri interne</h2>
+					<p>
+						<a href="#linkTabel">Sari la secțiune</a>
+						<br />
+						<a href="#item8">Contact</a>
+					</p>
 
-                    <h2>Linkuri externe</h2>
-                    <p>
-                        <a href="http://example.com">Example.com</a><br />
-                        <a href="https://openai.com">OpenAI</a>
-                    </p>
-                </div>
-                <div class="item7">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Sapiente distinctio, quibusdam repudiandae eveniet
-                    blanditiis maxime voluptas perferendis, officiis deleniti
-                    odio obcaecati, aliquid magnam nulla ad eius reiciendis nemo
-                    velit magni.
-                </div>
+					<h2>Linkuri externe</h2>
+					<p>
+						<a href="http://example.com">Example.com</a>
+						<br />
+						<a href="https://openai.com">OpenAI</a>
+					</p>
+				</div>
+				<div class="item7">
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+					Sapiente distinctio, quibusdam repudiandae eveniet
+					blanditiis maxime voluptas perferendis, officiis deleniti
+					odio obcaecati, aliquid magnam nulla ad eius reiciendis nemo
+					velit magni.
+				</div>
 
-                <div class="item8" id="item8">
-                    <div class="video-container">
-                        <video
-                            controls
-                            preload="auto"
-                            poster="/resurse/videos/poster.jpg"
-                            class="responsive-video"
-                        >
-                            <source
-                                src="/resurse/videos/video.mp4"
-                                type="video/mp4"
-                            />
-                            <source
-                                src="/resurse/videos/video.webm"
-                                type="video/webm"
-                            />
+				<div class="item8" id="item8">
+					<div class="video-container">
+						<video
+							controls
+							preload="auto"
+							poster="/resurse/videos/poster.jpg"
+							class="responsive-video">
+							<source
+								src="/resurse/videos/video.mp4"
+								type="video/mp4" />
+							<source
+								src="/resurse/videos/video.webm"
+								type="video/webm" />
 
-                            <track
-                                src="/resurse/videos/subtitles/ro.vtt"
-                                kind="subtitles"
-                                srclang="ro"
-                                label="Română"
-                                default
-                            />
-                            <track
-                                src="/resurse/videos/subtitles/en.vtt"
-                                kind="subtitles"
-                                srclang="en"
-                                label="English"
-                            />
+							<track
+								src="/resurse/videos/subtitles/ro.vtt"
+								kind="subtitles"
+								srclang="ro"
+								label="Română"
+								default />
+							<track
+								src="/resurse/videos/subtitles/en.vtt"
+								kind="subtitles"
+								srclang="en"
+								label="English" />
 
-                            Browserul tău nu suportă tag-ul video.
-                        </video>
-                    </div>
-                    <p>
-                        Fitnessul este esențial pentru menținerea unei vieți
-                        sănătoase. Exercițiile regulate îmbunătățesc sănătatea
-                        inimii, cresc rezistența și ajută la menținerea unei
-                        greutăți corporale optime. Adoptarea unui stil de viață
-                        activ poate avea beneficii pe termen lung atât pentru
-                        corp, cât și pentru minte. Poți folosi echipamente
-                        fitness precum
-                        <b>benzi elastice</b> pentru un antrenament acasă
-                        eficient. De asemenea, suplimentele precum
-                        <b>proteinele</b> și <b>creatina</b> pot susține
-                        performanța și recuperarea musculară.
-                    </p>
-                    <ul>
-                        <li>
-                            <strong
-                                >Îmbunătățește sănătatea cardiovasculară</strong
-                            >
-                        </li>
-                        <li>Crește forța și flexibilitatea</li>
-                        <li>Ajută la gestionarea stresului</li>
-                        <li>
-                            <strong>Contribuie la un somn mai odihnitor</strong>
-                        </li>
-                        <li>Sprijină pierderea în greutate</li>
-                    </ul>
-                    <h2>Videoclipuri despre echipamente de fitness</h2>
-                    <div class="container-iframe">
-                        <div class="taburi-iframe">
-                            <p>
-                                <a
-                                    href="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
-                                    target="videoFrame"
-                                    >Mituri fitness</a
-                                >
-                            </p>
-                            <p>
-                                <a
-                                    href="https://www.youtube.com/embed/VHyGqsPOUHs"
-                                    target="videoFrame"
-                                    >Exercitii pentru incepatori</a
-                                >
-                            </p>
-                            <p>
-                                <a
-                                    href="https://www.youtube.com/embed/hJ8rcTyINFo?si=2n3RGugDGxeSPqfQ"
-                                    target="videoFrame"
-                                    >Mituri fitness 2</a
-                                >
-                            </p>
-                        </div>
-                        <div class="video-responsive">
-                            <iframe
-                                name="videoFrame"
-                                src="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
-                                frameborder="0"
-                                allowfullscreen
-                            ></iframe>
-                        </div>
-                    </div>
-                    <h2>Întrebări frecvente despre echipamentele de fitness</h2>
+							Browserul tău nu suportă tag-ul video.
+						</video>
+					</div>
+					<p>
+						Fitnessul este esențial pentru menținerea unei vieți
+						sănătoase. Exercițiile regulate îmbunătățesc sănătatea
+						inimii, cresc rezistența și ajută la menținerea unei
+						greutăți corporale optime. Adoptarea unui stil de viață
+						activ poate avea beneficii pe termen lung atât pentru
+						corp, cât și pentru minte. Poți folosi echipamente
+						fitness precum
+						<b>benzi elastice</b>
+						pentru un antrenament acasă eficient. De asemenea,
+						suplimentele precum
+						<b>proteinele</b>
+						și
+						<b>creatina</b>
+						pot susține performanța și recuperarea musculară.
+					</p>
+					<ul>
+						<li>
+							<strong>
+								Îmbunătățește sănătatea cardiovasculară
+							</strong>
+						</li>
+						<li>Crește forța și flexibilitatea</li>
+						<li>Ajută la gestionarea stresului</li>
+						<li>
+							<strong>Contribuie la un somn mai odihnitor</strong>
+						</li>
+						<li>Sprijină pierderea în greutate</li>
+					</ul>
+					<h2>Videoclipuri despre echipamente de fitness</h2>
+					<div class="container-iframe">
+						<div class="taburi-iframe">
+							<p>
+								<a
+									href="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
+									target="videoFrame">
+									Mituri fitness
+								</a>
+							</p>
+							<p>
+								<a
+									href="https://www.youtube.com/embed/VHyGqsPOUHs"
+									target="videoFrame">
+									Exercitii pentru incepatori
+								</a>
+							</p>
+							<p>
+								<a
+									href="https://www.youtube.com/embed/hJ8rcTyINFo?si=2n3RGugDGxeSPqfQ"
+									target="videoFrame">
+									Mituri fitness 2
+								</a>
+							</p>
+						</div>
+						<div class="video-responsive">
+							<iframe
+								name="videoFrame"
+								src="https://www.youtube.com/embed/IwZVgOcnfQ8?si=eADXST8wCClh8Z1L"
+								frameborder="0"
+								allowfullscreen></iframe>
+						</div>
+					</div>
+					<h2>Întrebări frecvente despre echipamentele de fitness</h2>
 
-                    <details>
-                        <summary>
-                            Care este diferența dintre o bandă de alergat și un
-                            eliptic?
-                        </summary>
-                        <p>
-                            Banda de alergat simulează alergarea sau mersul și
-                            pune mai multă presiune pe articulații, în timp ce
-                            elipticul oferă un antrenament cu impact redus,
-                            protejând genunchii și șoldurile.
-                        </p>
-                    </details>
+					<details>
+						<summary>
+							Care este diferența dintre o bandă de alergat și un
+							eliptic?
+						</summary>
+						<p>
+							Banda de alergat simulează alergarea sau mersul și
+							pune mai multă presiune pe articulații, în timp ce
+							elipticul oferă un antrenament cu impact redus,
+							protejând genunchii și șoldurile.
+						</p>
+					</details>
 
-                    <details>
-                        <summary>
-                            Ce greutăți sunt recomandate pentru începători?
-                        </summary>
-                        <p>
-                            Începătorii ar trebui să înceapă cu gantere între
-                            2-5 kg, concentrându-se pe tehnică înainte de a
-                            crește greutatea.
-                        </p>
-                    </details>
+					<details>
+						<summary>
+							Ce greutăți sunt recomandate pentru începători?
+						</summary>
+						<p>
+							Începătorii ar trebui să înceapă cu gantere între
+							2-5 kg, concentrându-se pe tehnică înainte de a
+							crește greutatea.
+						</p>
+					</details>
 
-                    <details>
-                        <summary>
-                            Cât spațiu am nevoie pentru un aparat de vâslit?
-                        </summary>
-                        <p>
-                            Majoritatea aparatelor de vâslit au o lungime între
-                            2 și 2,5 metri și necesită un spațiu liber în jur
-                            pentru o utilizare confortabilă.
-                        </p>
-                    </details>
+					<details>
+						<summary>
+							Cât spațiu am nevoie pentru un aparat de vâslit?
+						</summary>
+						<p>
+							Majoritatea aparatelor de vâslit au o lungime între
+							2 și 2,5 metri și necesită un spațiu liber în jur
+							pentru o utilizare confortabilă.
+						</p>
+					</details>
 
-                    <details>
-                        <summary>
-                            Este mai eficientă o bicicletă statică sau o bandă
-                            de alergat?
-                        </summary>
-                        <p>
-                            Depinde de obiectivul tău. Banda de alergat arde mai
-                            multe calorii, dar bicicleta statică este mai blândă
-                            cu articulațiile.
-                        </p>
-                    </details>
+					<details>
+						<summary>
+							Este mai eficientă o bicicletă statică sau o bandă
+							de alergat?
+						</summary>
+						<p>
+							Depinde de obiectivul tău. Banda de alergat arde mai
+							multe calorii, dar bicicleta statică este mai blândă
+							cu articulațiile.
+						</p>
+					</details>
 
-                    <details>
-                        <summary>
-                            Trebuie să întrețin echipamentele de fitness acasă?
-                        </summary>
-                        <p>
-                            Da, este recomandat să cureți echipamentele după
-                            utilizare, să verifici periodic șuruburile și să
-                            lubrifiezi componentele în mișcare.
-                        </p>
-                    </details>
-                </div>
-            </main>
-            <%- include("../fragmente/footer.ejs") %>
-        </div>
-    </body>
+					<details>
+						<summary>
+							Trebuie să întrețin echipamentele de fitness acasă?
+						</summary>
+						<p>
+							Da, este recomandat să cureți echipamentele după
+							utilizare, să verifici periodic șuruburile și să
+							lubrifiezi componentele în mișcare.
+						</p>
+					</details>
+				</div>
+			</main>
+			<%- include("../fragmente/footer.ejs") %>
+		</div>
+	</body>
 </html>

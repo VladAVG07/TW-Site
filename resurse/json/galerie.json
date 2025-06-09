@@ -1,7 +1,101 @@
 {
-    "cale_galerie": "/resurse/imagini/galerie",
-    "imagini": [
-        
-    ]
-
+	"cale_galerie": "/resurse/imagini/galerie",
+	"imagini": [
+		{
+			"cale_imagine": "poza1 (1).jpg",
+			"titlu": "Imagine 1",
+			"descriere": "Descriere pentru poza 1",
+			"timp": "08:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (2).jpg",
+			"titlu": "Imagine 2",
+			"descriere": "Descriere pentru poza 2",
+			"timp": "09:30-23:30"
+		},
+		{
+			"cale_imagine": "poza1 (3).jpg",
+			"titlu": "Imagine 3",
+			"descriere": "Descriere pentru poza 3",
+			"timp": "12:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (4).jpg",
+			"titlu": "Imagine 4",
+			"descriere": "Descriere pentru poza 4",
+			"timp": "14:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (5).jpg",
+			"titlu": "Imagine 5",
+			"descriere": "Descriere pentru poza 5",
+			"timp": "06:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (6).jpg",
+			"titlu": "Imagine 6",
+			"descriere": "Descriere pentru poza 6",
+			"timp": "07:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (7).jpg",
+			"titlu": "Imagine 7",
+			"descriere": "Descriere pentru poza 7",
+			"timp": "10:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (8).jpg",
+			"titlu": "Imagine 8",
+			"descriere": "Descriere pentru poza 8",
+			"timp": "16:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (9).jpg",
+			"titlu": "Imagine 9",
+			"descriere": "Descriere pentru poza 9",
+			"timp": "13:00-23:30"
+		},
+		{
+			"cale_imagine": "poza1 (10).jpg",
+			"titlu": "Imagine 10",
+			"descriere": "Descriere pentru poza 10",
+			"timp": "18:00-22:00"
+		},
+		{
+			"cale_imagine": "poza1 (11).jpg",
+			"titlu": "Imagine 11",
+			"descriere": "Descriere pentru poza 11",
+			"timp": "11:00-14:00"
+		},
+		{
+			"cale_imagine": "poza1 (12).jpg",
+			"titlu": "Imagine 12",
+			"descriere": "Descriere pentru poza 12",
+			"timp": "05:00-08:00"
+		},
+		{
+			"cale_imagine": "poza1 (13).jpg",
+			"titlu": "Imagine 13",
+			"descriere": "Descriere pentru poza 13",
+			"timp": "15:00-17:00"
+		},
+		{
+			"cale_imagine": "poza1 (14).jpg",
+			"titlu": "Imagine 14",
+			"descriere": "Descriere pentru poza 14",
+			"timp": "19:00-23:00"
+		},
+		{
+			"cale_imagine": "poza1 (15).jpg",
+			"titlu": "Imagine 15",
+			"descriere": "Descriere pentru poza 15",
+			"timp": "00:00-06:00"
+		},
+		{
+			"cale_imagine": "poza1 (16).jpg",
+			"titlu": "Imagine 16",
+			"descriere": "Descriere pentru poza 16",
+			"timp": "20:00-23:59"
+		}
+	]
 }

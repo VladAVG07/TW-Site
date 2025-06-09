@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const sass = require('sass');
 const pg = require('pg');
+const sharp = require('sharp');
 
 const Client = pg.Client;
 
@@ -59,6 +60,7 @@ obGlobal = {
 	folderCss: path.join(__dirname, 'resurse/css'),
 	folderBackup: path.join(__dirname, 'backup'),
 	optiuniMeniu: null,
+	galerie: null,
 };
 
 function initErori() {
@@ -163,6 +165,60 @@ fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
 	}
 });
 
+function resizeImageIfNotExists(originalPath, destSmall, destMedium) {
+	if (!fs.existsSync(destSmall)) {
+		sharp(originalPath)
+			.resize(400)
+			.toFile(destSmall)
+			.catch((err) => console.error('Eroare resize small:', err));
+	}
+
+	if (!fs.existsSync(destMedium)) {
+		sharp(originalPath)
+			.resize(800)
+			.toFile(destMedium)
+			.catch((err) => console.error('Eroare resize medium:', err));
+	}
+}
+
+// Funcție pentru verificarea dacă ora curentă este în interval
+function esteInInterval(interval, oraCurenta) {
+	const [start, end] = interval.split('-');
+	const [hStart, mStart] = start.split(':').map(Number);
+	const [hEnd, mEnd] = end.split(':').map(Number);
+
+	const startMin = hStart * 60 + mStart;
+	const endMin = hEnd * 60 + mEnd;
+	const currentMin = oraCurenta.getHours() * 60 + oraCurenta.getMinutes();
+
+	return currentMin >= startMin && currentMin <= endMin;
+}
+
+// Funcție care returnează imaginile filtrate
+function obtineImaginiFiltrate() {
+	const json = JSON.parse(fs.readFileSync('resurse/json/galerie.json'));
+	const oraCurenta = new Date();
+	const imaginiValide = json.imagini.filter((img) =>
+		esteInInterval(img.timp, oraCurenta)
+	);
+
+	imaginiValide.forEach((img) => {
+		const originalPath = path.join(
+			__dirname,
+			json.cale_galerie,
+			img.cale_imagine
+		);
+		const destSmall = originalPath.replace('.jpg', '.small.jpg');
+		const destMedium = originalPath.replace('.jpg', '.medium.jpg');
+
+		resizeImageIfNotExists(originalPath, destSmall, destMedium);
+	});
+
+	return { cale_galerie: json.cale_galerie, imagini: imaginiValide };
+}
+
+obGlobal.galerie = obtineImaginiFiltrate();
+
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
@@ -171,9 +227,20 @@ app.get('/favicon.ico', function (req, res) {
 });
 
 app.get(['/', '/index', '/home'], function (req, res) {
+	const galerie = obGlobal.galerie;
 	res.render('pagini/index', {
 		ip: req.ip,
+		galerie: galerie,
 	});
+});
+
+app.get('/navbar', function (req, res) {
+	res.render('pagini/navbar');
+});
+
+app.get('/galerie', (req, res) => {
+	const galerie = obGlobal.galerie;
+	res.render('pagini/galerie', { galerie });
 });
 
 app.get('/despre', function (req, res) {
@@ -235,8 +302,6 @@ app.get('/produse', async function (req, res) {
 				client.query(queries.queryCulori),
 				client.query(queries.queryProduse),
 			]);
-
-		console.log(rezPret.rows[0], rezEtichete);
 		// Render the page with all results
 		res.render('pagini/produse', {
 			produse: rezProduse.rows,
@@ -271,6 +336,10 @@ app.get('/produs/:id', function (req, res) {
 });
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
+	afisareEroare(res, 403);
+});
+
+app.get('/resurse/', function (req, res, next) {
 	afisareEroare(res, 403);
 });
 
