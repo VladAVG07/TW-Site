@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<title>Seturi Produse</title>
+		<%- include("../fragmente/head") %>
+		<style>
+			body {
+				background-color: #f8f9fa;
+				color: #212529;
+			}
+
+			h1,
+			h2,
+			h3 {
+				color: #212529;
+			}
+
+			.set-container {
+				border: 1px solid #dee2e6;
+				margin: 20px 0;
+				padding: 20px;
+				border-radius: 8px;
+				background-color: #ffffff;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.set-pricing {
+				background-color: #f8f9fa;
+				padding: 15px;
+				border-radius: 8px;
+				margin-bottom: 15px;
+				border-left: 4px solid #28a745;
+			}
+
+			.original-price {
+				text-decoration: line-through;
+				color: #6c757d;
+			}
+
+			.discount {
+				color: #28a745;
+				font-weight: bold;
+			}
+
+			.final-price {
+				font-size: 1.2em;
+				color: #212529;
+			}
+
+			.produse-set {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 20px;
+				margin-top: 15px;
+			}
+
+			.produs-card {
+				border: 1px solid #dee2e6;
+				background-color: #ffffff;
+				padding: 15px;
+				text-align: center;
+				border-radius: 8px;
+				transition: all 0.3s ease;
+			}
+
+			.produs-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 6px 12px rgba(40, 167, 69, 0.1);
+				border-color: #28a745;
+			}
+
+			.produs-card a {
+				color: #212529;
+				text-decoration: none;
+			}
+
+			.produs-card h3 {
+				margin: 10px 0;
+				color: #28a745;
+			}
+
+			.produs-imagine {
+				max-width: 150px;
+				height: auto;
+				margin: 0 auto;
+				border-radius: 4px;
+				transition: transform 0.3s ease;
+			}
+
+			.produs-card:hover .produs-imagine {
+				transform: scale(1.05);
+			}
+
+			.produs-card p {
+				color: #495057;
+			}
+
+			strong {
+				color: #212529;
+			}
+		</style>
+	</head>
+	<body>
+		<%- include("../fragmente/header") %>
+		<main>
+			<h1>Seturi de Produse</h1>
+
+			<% for(let set of locals.seturi) { // Calculate total and discount
+			const pretTotal = set.produse.reduce((sum, prod) => sum +
+			parseFloat(prod.pret), 0); const discount = Math.min(5,
+			set.produse.length) * 5; const pretFinal = pretTotal * (1 -
+			discount/100); %>
+			<div class="set-container">
+				<h2><%= set.nume_set %></h2>
+				<p><%= set.descriere_set %></p>
+
+				<div class="set-pricing">
+					<p>
+						<strong>Preț original:</strong>
+						<span class="original-price">
+							<%= pretTotal.toFixed(2) %> RON
+						</span>
+					</p>
+					<p>
+						<strong>Discount:</strong>
+						<span class="discount"><%= discount %>%</span>
+					</p>
+					<p class="final-price">
+						<strong>Preț final set:</strong>
+						<span><%= pretFinal.toFixed(2) %> RON</span>
+					</p>
+				</div>
+
+				<div class="produse-set">
+					<% for(let produs of set.produse) { %>
+					<div class="produs-card">
+						<a href="/produs/<%= produs.id %>">
+							<img
+								src="/resurse/imagini/produse/<%= produs.imagine %>"
+								alt="<%= produs.nume %>"
+								class="produs-imagine" />
+							<h3><%= produs.nume %></h3>
+							<p>Preț individual: <%= produs.pret %> RON</p>
+						</a>
+					</div>
+					<% } %>
+				</div>
+			</div>
+			<% } %>
+		</main>
+		<%- include("../fragmente/footer") %>
+	</body>
+</html>

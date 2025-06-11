@@ -18,7 +18,7 @@ client = new Client({
 client.connect();
 client.query('select * from produse', function (err, rezultat) {
 	console.log(err);
-	console.log(rezultat);
+	// console.log(rezultat);
 });
 // client.query(
 // 	'select * from unnest(enum_range(null::categ_prajitura))',
@@ -61,15 +61,16 @@ obGlobal = {
 	folderBackup: path.join(__dirname, 'backup'),
 	optiuniMeniu: null,
 	galerie: null,
+	ofertaCurenta: null,
 };
 
 function initErori() {
 	let continut = fs
 		.readFileSync(path.join(__dirname, 'resurse/json/erori.json'))
 		.toString('utf-8');
-	console.log(continut);
+	// console.log(continut);
 	obGlobal.obErori = JSON.parse(continut);
-	console.log(obGlobal.obErori);
+	// console.log(obGlobal.obErori);
 
 	obGlobal.obErori.eroare_default.imagine = path.join(
 		obGlobal.obErori.cale_baza,
@@ -78,7 +79,7 @@ function initErori() {
 	for (let eroare of obGlobal.obErori.info_erori) {
 		eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
 	}
-	console.log(obGlobal.obErori);
+	// console.log(obGlobal.obErori);
 }
 
 initErori();
@@ -115,7 +116,7 @@ for (let folder of vect_foldere) {
 }
 
 function compileazaScss(caleScss, caleCss) {
-	console.log('cale:', caleCss);
+	// console.log('cale:', caleCss);
 	if (!caleCss) {
 		let numeFisExt = path.basename(caleScss); // "folder1/folder2/ceva.txt" -> "ceva.txt"
 		let numeFis = numeFisExt.split('.')[0]; /// "a.scss"  -> ["a","scss"]
@@ -156,7 +157,7 @@ for (let numeFis of vFisiere) {
 }
 
 fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
-	console.log(eveniment, numeFis);
+	// console.log(eveniment, numeFis);
 	if (eveniment == 'change' || eveniment == 'rename') {
 		let caleCompleta = path.join(obGlobal.folderScss, numeFis);
 		if (fs.existsSync(caleCompleta)) {
@@ -179,6 +180,57 @@ function resizeImageIfNotExists(originalPath, destSmall, destMedium) {
 			.toFile(destMedium)
 			.catch((err) => console.error('Eroare resize medium:', err));
 	}
+}
+
+function genereazaOferte(interval, T2) {
+	const reduceri = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+	const categorii = [
+		'Echipament',
+		'Suplimente',
+		'Imbracaminte',
+		'Accesorii',
+		'Nutritie',
+	];
+
+	const randomReducere =
+		reduceri[Math.floor(Math.random() * reduceri.length)];
+	const randomCategorie =
+		categorii[Math.floor(Math.random() * categorii.length)];
+
+	const oferta = {
+		reducere: randomReducere,
+		categorie: randomCategorie,
+		dataIncepere: new Date(),
+		dataFinalizare: new Date(Date.now() + interval),
+	};
+
+	const caleOferte = path.join(__dirname, 'resurse/json/oferte.json');
+	let oferte = [];
+	if (fs.existsSync(caleOferte)) {
+		const continut = JSON.parse(fs.readFileSync(caleOferte, 'utf-8'));
+		oferte = continut.oferte;
+	}
+	oferte = oferte.filter((oferta) => {
+		return Date.now() - oferta.dataFinalizare <= T2;
+	});
+	oferte.push(oferta);
+	console.log(oferte);
+	obGlobal.ofertaCurenta = oferta;
+	fs.writeFileSync(caleOferte, JSON.stringify({ oferte: oferte }, null, 2));
+}
+
+setInterval(() => {
+	genereazaOferte(30000, 15000);
+}, 30000);
+
+function readLastOferta() {
+	const caleOferte = path.join(__dirname, 'resurse/json/oferte.json');
+	let oferte = [];
+	if (fs.existsSync(caleOferte)) {
+		const continut = JSON.parse(fs.readFileSync(caleOferte, 'utf-8'));
+		oferte = continut.oferte;
+	}
+	return oferte[oferte.length - 1];
 }
 
 // Funcție pentru verificarea dacă ora curentă este în interval
@@ -228,14 +280,20 @@ app.get('/favicon.ico', function (req, res) {
 
 app.get(['/', '/index', '/home'], function (req, res) {
 	const galerie = obGlobal.galerie;
+	const ofertaCurenta = readLastOferta();
 	res.render('pagini/index', {
 		ip: req.ip,
 		galerie: galerie,
+		ofertaCurenta: ofertaCurenta,
 	});
 });
 
 app.get('/navbar', function (req, res) {
 	res.render('pagini/navbar');
+});
+
+app.get('/latest_oferta', function (req, res) {
+	return res.json(readLastOferta());
 });
 
 app.get('/galerie', (req, res) => {
@@ -276,13 +334,11 @@ app.get('/abc', function (req, res, next) {
 
 app.get('/produse', async function (req, res) {
 	try {
-		console.log(req.query);
 		let conditieQuery = '';
 		if (req.query.tip) {
 			conditieQuery = ` where tip_produs='${req.query.tip}'`;
 		}
 
-		// Define all queries
 		const queries = {
 			queryPret:
 				'select min(pret) as pret_minim, max(pret) as pret_maxim, max(specificatie_numerica) as specificatie_maxima from produse',
@@ -293,7 +349,6 @@ app.get('/produse', async function (req, res) {
 			queryProduse: 'select * from produse' + conditieQuery,
 		};
 
-		// Execute all queries in parallel
 		const [rezPret, rezEtichete, rezOptiuni, rezCulori, rezProduse] =
 			await Promise.all([
 				client.query(queries.queryPret),
@@ -302,13 +357,24 @@ app.get('/produse', async function (req, res) {
 				client.query(queries.queryCulori),
 				client.query(queries.queryProduse),
 			]);
-		// Render the page with all results
+
+		// Citește oferta activă
+		const caleOferte = path.join(__dirname, 'resurse/json/oferte.json');
+		let ofertaActiva = null;
+		if (fs.existsSync(caleOferte)) {
+			const continut = JSON.parse(fs.readFileSync(caleOferte, 'utf-8'));
+			if (continut.oferte && continut.oferte.length > 0) {
+				ofertaActiva = continut.oferte[0];
+			}
+		}
+
 		res.render('pagini/produse', {
 			produse: rezProduse.rows,
 			optiuni: rezOptiuni.rows,
 			culori: rezCulori.rows,
 			etichete: rezEtichete.rows,
 			pretInfo: rezPret.rows[0],
+			ofertaActiva: ofertaActiva,
 		});
 	} catch (err) {
 		console.log(err);
@@ -316,23 +382,68 @@ app.get('/produse', async function (req, res) {
 	}
 });
 
-app.get('/produs/:id', function (req, res) {
-	console.log(req.params);
-	client.query(
-		`select * from produse where id=${req.params.id}`,
-		function (err, rez) {
-			if (err) {
-				console.log(err);
-				afisareEroare(res, 2);
-			} else {
-				if (rez.rowCount == 0) {
-					afisareEroare(res, 404);
-				} else {
-					res.render('pagini/produs', { prod: rez.rows[0] });
-				}
-			}
-		}
-	);
+app.get('/seturi', async function (req, res) {
+	try {
+		const rezultat = await client.query(`
+            SELECT s.*, json_agg(json_build_object(
+                'id', p.id,
+                'nume', p.nume,
+                'imagine', p.imagine,
+                'pret', p.pret
+            )) as produse
+            FROM seturi s
+            INNER JOIN asociere_set sp ON s.id = sp.id_set
+            INNER JOIN produse p ON sp.id_produs = p.id
+            GROUP BY s.id, s.nume_set, s.descriere_set
+            ORDER BY s.id
+        `);
+
+		res.render('pagini/seturi', {
+			seturi: rezultat.rows,
+		});
+	} catch (err) {
+		console.log(err);
+		afisareEroare(res, 2);
+	}
+});
+
+app.get('/produs/:id', async function (req, res) {
+	try {
+		// Get product info
+		const rezultatProdus = await client.query(
+			`SELECT * FROM produse WHERE id=$1`,
+			[req.params.id]
+		);
+
+		// Get sets containing this product
+		const rezultatSeturi = await client.query(
+			`
+            SELECT s.*, json_agg(json_build_object(
+                'id', p.id,
+                'nume', p.nume,
+                'imagine', p.imagine,
+                'pret', p.pret
+            )) as produse
+            FROM seturi s
+            INNER JOIN asociere_set sp ON s.id = sp.id_set
+            INNER JOIN produse p ON sp.id_produs = p.id
+            WHERE EXISTS (
+                SELECT 1 FROM asociere_set 
+                WHERE id_set = s.id AND id_produs = $1
+            )
+            GROUP BY s.id, s.nume_set, s.descriere_set
+        `,
+			[req.params.id]
+		);
+
+		res.render('pagini/produs', {
+			prod: rezultatProdus.rows[0],
+			seturi: rezultatSeturi.rows,
+		});
+	} catch (err) {
+		console.log(err);
+		afisareEroare(res, 2);
+	}
 });
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
@@ -359,7 +470,7 @@ app.get('/*splat', function (req, res, next) {
 				}
 			} else {
 				res.send(rezultatRandare);
-				console.log(rezultatRandare);
+				// console.log(rezultatRandare);
 			}
 		});
 	} catch (errRandare) {

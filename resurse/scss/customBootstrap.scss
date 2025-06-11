@@ -93,5 +93,14 @@ body {
 	border-radius: $border-radius !important;
 }
 
+$form-range-thumb-width: calc(1rem * 1.5); // 50% bigger than font size
+$form-range-thumb-height: calc(1rem * 1.5); // 50% bigger than font size
+$form-range-thumb-bg: #1b5e20; // Culoarea bulinei (verde)
+$form-range-track-bg: rgb(
+	91.47,
+	208.03,
+	100.17
+); // Culoarea sliderului (verde deschis)
+
 // 11. Import Bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

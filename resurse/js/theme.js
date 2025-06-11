@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Toggle theme
 	themeToggle.addEventListener('click', () => {
-		console.log('aiaus');
 		const currentTheme =
 			document.documentElement.getAttribute('data-theme');
 		const newTheme = currentTheme === 'light' ? 'dark' : 'light';

@@ -13,6 +13,9 @@
 			type="text/css" />
 		<title>Sali Fitness - produse</title>
 		<%- include("../fragmente/head") %>
+		<script>
+			window.ofertaActiva = JSON.stringify(ofertaActiva || null);
+		</script>
 		<script type="text/javascript" src="/resurse/js/produse.js"></script>
 		<script
 			type="text/javascript"
@@ -22,122 +25,199 @@
 		<%- include("../fragmente/header") %>
 
 		<main>
-			<label>
-				Nume:
-				<input type="text" id="inp-nume" />
-			</label>
-			<label>
-				Maxim valoare numerica:
-				<input
-					type="number"
-					id="inp-calorii"
-					value="<%- locals.pretInfo.specificatie_maxima %>" />
-			</label>
-			<div>
-				Filtru specificatie numerica:
-				<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-				<p>
-					<label>
-						mic (val &lt; 350)
-						<input
-							id="i_rad1"
-							name="gr_rad"
-							value="0:350"
-							type="radio" />
-					</label>
-				</p>
-				<p>
-					<label>
-						mediu (350 &le; val &lt; 700)
-						<input
-							id="i_rad2"
-							name="gr_rad"
-							value="350:700"
-							type="radio" />
-					</label>
-				</p>
+			<!-- Wrap inputs in grid -->
+			<div class="container">
+				<div class="row g-3">
+					<!-- Left column -->
+					<div class="col-12 col-md-6">
+						<div class="mb-3">
+							<label class="form-label">
+								Nume:
+								<input
+									type="text"
+									id="inp-nume"
+									class="form-control form-control-sm" />
+							</label>
+						</div>
 
-				<p>
-					<label>
-						Ridicat (700 &le; val)
-						<input
-							id="i_rad3"
-							name="gr_rad"
-							value="700:1000000000"
-							type="radio" />
-					</label>
-				</p>
+						<div class="mb-3">
+							<label class="form-label">
+								Maxim valoare numerica:
+								<input
+									type="number"
+									id="inp-calorii"
+									class="form-control form-control-sm"
+									value="<%- locals.pretInfo.specificatie_maxima %>" />
+							</label>
+						</div>
 
-				<p>
-					<label>
-						Toate
-						<input
-							id="i_rad4"
-							checked
-							name="gr_rad"
-							value="toate"
-							type="radio" />
-					</label>
-				</p>
+						<div class="mb-3">
+							<p class="form-label">
+								Filtru specificatie numerica:
+							</p>
+							<div
+								class="btn-group"
+								role="group"
+								aria-label="Filtru specificatie">
+								<input
+									type="radio"
+									class="btn-check"
+									name="gr_rad"
+									id="i_rad1"
+									value="0:350" />
+								<label
+									class="btn btn-outline-primary"
+									for="i_rad1">
+									mic (val < 350)
+								</label>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="gr_rad"
+									id="i_rad2"
+									value="350:700" />
+								<label
+									class="btn btn-outline-primary"
+									for="i_rad2">
+									mediu (350 ≤ val < 700)
+								</label>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="gr_rad"
+									id="i_rad3"
+									value="700:1000000000" />
+								<label
+									class="btn btn-outline-primary"
+									for="i_rad3">
+									Ridicat (700 ≤ val)
+								</label>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="gr_rad"
+									id="i_rad4"
+									value="toate"
+									checked />
+								<label
+									class="btn btn-outline-primary"
+									for="i_rad4">
+									Toate
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<!-- Right column -->
+					<div class="col-12 col-md-6">
+						<div class="mb-3">
+							<label>
+								Pret minim:
+								<input
+									type="range"
+									id="inp-pret"
+									class="form-range"
+									value="<%- locals.pretInfo.pret_minim %>"
+									min="<%- locals.pretInfo.pret_minim %>"
+									max="<%- locals.pretInfo.pret_maxim %>" />
+								<span id="infoRange">
+									(<%- locals.pretInfo.pret_minim %>)
+								</span>
+							</label>
+						</div>
+
+						<div class="mb-3">
+							<label>
+								Select simplu:
+								<select
+									id="inp-categorie"
+									class="form-select form-select-sm">
+									<option
+										id="sel-toate"
+										selected
+										value="toate">
+										toate
+									</option>
+									<% for (let opt of locals.optiuni) { %>
+									<option value="<%- opt.unnest %>">
+										<%- opt.unnest %>
+									</option>
+									<% } %>
+								</select>
+							</label>
+						</div>
+
+						<div class="mb-3">
+							<p class="form-label">Culori:</p>
+							<div class="d-flex gap-2 flex-wrap">
+								<% for(let culoare of locals.culori) { %>
+								<input
+									type="checkbox"
+									class="btn-check"
+									name="culori"
+									id="btn-<%- culoare.unnest %>"
+									value="<%- culoare.unnest %>"
+									checked />
+								<label
+									class="btn btn-outline-primary"
+									for="btn-<%- culoare.unnest %>">
+									<%- culoare.unnest %>
+								</label>
+								<% } %>
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<label>
+								Ce nu vrei sa apara:
+								<select
+									id="select-multiplu"
+									name="multiplu"
+									multiple
+									class="form-select form-select-sm">
+									<% for (let eticheta of locals.etichete) {
+									%>
+									<option value="<%- eticheta.unnest %>">
+										<%- eticheta.unnest %>
+									</option>
+									<% } %>
+								</select>
+							</label>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div>
-				<span>Culori:</span>
-				<% for(let culoare of locals.culori) { %>
-				<br />
-				<label>
-					<input
-						type="checkbox"
-						name="culori"
-						value="<%- culoare.unnest %>"
-						checked />
-					<%- culoare.unnest %>
-				</label>
-				<% } %>
-			</div>
-
-			<label>
-				Ce nu vrei sa apara:
-				<select id="select-multiplu" name="multiplu" multiple>
-					<% for (let eticheta of locals.etichete) { %>
-					<option value="<%- eticheta.unnest %>">
-						<%- eticheta.unnest %>
-					</option>
-					<% } %>
-				</select>
-			</label>
-
-			<label>
-				Pret minim:
-				<input
-					type="range"
-					id="inp-pret"
-					value="<%- locals.pretInfo.pret_minim %>"
-					min="<%- locals.pretInfo.pret_minim %>"
-					max="<%- locals.pretInfo.pret_maxim %>" />
-				<span id="infoRange">(<%- locals.pretInfo.pret_minim %>)</span>
-			</label>
-			<label>
-				Select simplu:
-				<select id="inp-categorie">
-					<option id="sel-toate" selected value="toate">toate</option>
-					<% for (let opt of locals.optiuni) { %>
-					<option value="<%- opt.unnest %>"><%- opt.unnest %></option>
-					<% } %>
-				</select>
-			</label>
-
-			<p>
-				<button class="c1 c2 c3" id="filtrare">Filtreaza</button>
-
-				<button id="resetare">Reseteaza</button>
-				<br />
-				<button id="sortCrescNume">
-					Sorteaza crescator dupa pret si nume
+			<p class="d-flex gap-2 flex-wrap">
+				<button class="btn btn-primary" id="filtrare">
+					<i class="bi bi-funnel-fill"></i>
+					<span class="d-none d-md-inline">Filtreaza</span>
 				</button>
-				<button id="sortDescrescNume">
-					Sorteaza descrescator dupa pret si nume
+
+				<button class="btn btn-secondary" id="resetare">
+					<i class="bi bi-arrow-counterclockwise"></i>
+					<span class="d-none d-md-inline">Reseteaza</span>
 				</button>
+
+				<button class="btn btn-primary" id="sortCrescNume">
+					<i class="bi bi-sort-down"></i>
+					<span class="d-none d-md-inline">Sorteaza crescator</span>
+				</button>
+
+				<button class="btn btn-primary" id="sortDescrescNume">
+					<i class="bi bi-sort-up"></i>
+					<span class="d-none d-md-inline">
+						Sorteaza descrescator
+					</span>
+				</button>
+
+				<a href="/seturi" class="btn btn-success">
+					<i class="bi bi-collection"></i>
+					<span class="d-none d-md-inline">Vezi Seturi</span>
+				</a>
 			</p>
 
 			<p id="p-suma">
@@ -166,8 +246,38 @@
 						</h3>
 						<div class="info-prod">
 							<p class="pret">
-								Pret:
-								<span class="val-pret"><%- prod.pret%></span>
+								Pret: <% let ofertaValida = false; let pretRedus
+								= null; if ( typeof ofertaActiva !== "undefined"
+								&& ofertaActiva && prod.categorie_mare ===
+								ofertaActiva.categorie && new
+								Date(ofertaActiva.dataFinalizare) > new Date() )
+								{ ofertaValida = true; pretRedus =
+								Math.round(prod.pret * (1 -
+								ofertaActiva.reducere / 100)); } %> <% if
+								(ofertaValida) { %>
+								<span
+									class="val-pret"
+									style="
+										text-decoration: line-through;
+										color: #888;
+									">
+									<%- prod.pret %> RON
+								</span>
+								<span
+									class="val-pret-redu"
+									style="
+										color: #d32f2f;
+										font-weight: bold;
+										margin-left: 0.5em;
+									">
+									<%- pretRedus %> RON (-<%-
+									ofertaActiva.reducere %>%)
+								</span>
+								<% } else { %>
+								<span class="val-pret">
+									<%- prod.pret %> RON
+								</span>
+								<% } %>
 							</p>
 							<p class="subcategorie">
 								Subcategorie:

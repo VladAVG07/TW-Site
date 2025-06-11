@@ -95,12 +95,33 @@
 					</span>
 				</div>
 				<div class="item4">
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id
-					in voluptatibus consequuntur, dolorem incidunt voluptates
-					asperiores deserunt fuga dignissimos, velit aut quidem
-					<hr class="angled-hr" />
-					temporibus consequatur illum aliquid reiciendis laboriosam
-					maiores quod?
+					<% if (ofertaCurenta) { %>
+					<div
+						id="oferta-anunt"
+						data-finalizare="<%= ofertaCurenta.dataFinalizare %>"
+						style="
+							background: #ffe082;
+							padding: 1em;
+							margin-bottom: 1em;
+							border-radius: 8px;
+							text-align: center;
+						">
+						<h3>
+							Ofertă Specială la <%= ofertaCurenta.categorie %>!
+						</h3>
+						<p>
+							Reducere:
+							<strong><%= ofertaCurenta.reducere %>%</strong>
+						</p>
+						<p>
+							Valabilă până la:
+							<span id="oferta-expira"></span>
+						</p>
+						<div
+							id="timer-oferta"
+							style="font-size: 1.5em; font-weight: bold"></div>
+					</div>
+					<% } %>
 				</div>
 				<div class="item5">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.

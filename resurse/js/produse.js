@@ -1,4 +1,58 @@
 window.onload = function () {
+	let ofertaActiva = window.ofertaActiva || null;
+
+	function actualizeazaPreturiProduse() {
+		document.querySelectorAll('.produs').forEach((prod) => {
+			const pretInitial = parseFloat(prod.getAttribute('data-pret'));
+			const categorie = prod.getAttribute('data-categorie');
+			const pretElem = prod.querySelector('.pret');
+			if (!pretElem) return;
+
+			let ofertaValida = false;
+			let pretRedus = null;
+			if (
+				ofertaActiva &&
+				categorie === ofertaActiva.categorie &&
+				new Date(ofertaActiva.dataFinalizare) > new Date()
+			) {
+				ofertaValida = true;
+				pretRedus = Math.round(
+					pretInitial * (1 - ofertaActiva.reducere / 100)
+				);
+			}
+
+			if (ofertaValida) {
+				pretElem.innerHTML = `
+                    Pret:
+                    <span class="val-pret" style="text-decoration: line-through; color: #888;">
+                        ${pretInitial} RON
+                    </span>
+                    <span class="val-pret-redu" style="color: #d32f2f; font-weight: bold; margin-left: 0.5em;">
+                        ${pretRedus} RON (-${ofertaActiva.reducere}%)
+                    </span>
+                `;
+			} else {
+				pretElem.innerHTML = `
+                    Pret:
+                    <span class="val-pret">${pretInitial} RON</span>
+                `;
+			}
+		});
+	}
+
+	function fetchOfertaNoua() {
+		fetch('/latest_oferta')
+			.then((r) => r.json())
+			.then((oferta) => {
+				ofertaActiva = oferta;
+				actualizeazaPreturiProduse();
+			});
+	}
+
+	// Initialize and start polling
+	actualizeazaPreturiProduse();
+	setInterval(fetchOfertaNoua, 1000);
+
 	function normalizeDiacritics(str) {
 		return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 	}
