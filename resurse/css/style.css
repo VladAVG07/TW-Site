@@ -535,7 +535,6 @@ main a[href^='http']:hover::before {
 		margin: 0;
 	}
 
-	/* MARGINI ALTERNATIVE STÂNGA / DREAPTA */
 	@page :left {
 		margin-left: 2.5cm;
 		margin-right: 0.5cm;
@@ -546,7 +545,6 @@ main a[href^='http']:hover::before {
 		margin-right: 2.5cm;
 	}
 
-	/* ASCUNDE ELEMENTELE MEDIA ȘI LINKUL DE ÎNTOARCERE SUS */
 	img,
 	iframe,
 	video,
@@ -572,6 +570,10 @@ main a[href^='http']:hover::before {
 	/* ASCUNDE NAVIGAȚIA */
 	#navigatie {
 		display: none !important;
+	}
+
+	.hamburger-menu {
+		display: block !important;
 	}
 
 	/* GRID -> BLOCK */

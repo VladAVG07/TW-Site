@@ -105,11 +105,10 @@
 		<main>
 			<h1>Seturi de Produse</h1>
 
-			<% for(let set of locals.seturi) { // Calculate total and discount
-			const pretTotal = set.produse.reduce((sum, prod) => sum +
-			parseFloat(prod.pret), 0); const discount = Math.min(5,
-			set.produse.length) * 5; const pretFinal = pretTotal * (1 -
-			discount/100); %>
+			<% for(let set of locals.seturi) { const pretTotal =
+			set.produse.reduce((sum, prod) => sum + parseFloat(prod.pret), 0);
+			const discount = Math.min(5, set.produse.length) * 5; const
+			pretFinal = pretTotal * (1 - discount/100); %>
 			<div class="set-container">
 				<h2><%= set.nume_set %></h2>
 				<p><%= set.descriere_set %></p>

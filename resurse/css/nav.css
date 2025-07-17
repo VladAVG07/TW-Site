@@ -140,7 +140,7 @@ li:hover > .submenu {
 		align-items: flex-start;
 		justify-content: flex-start;
 		width: 70%;
-		height: 100vh;
+		height: 60%;
 		position: fixed;
 		top: 0;
 		right: -100%;

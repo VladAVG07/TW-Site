@@ -20,6 +20,7 @@
 		<script
 			type="text/javascript"
 			src="/resurse/js/produse-cos.js"></script>
+		<script src="/resurse/js/comparare.js"></script>
 	</head>
 	<body>
 		<%- include("../fragmente/header") %>
@@ -325,6 +326,12 @@
 								value="<%-prod.id %>"
 								autocomplete="off" />
 						</label>
+						<button
+							class="btn btn-outline-primary btn-compara"
+							data-id="<%- prod.id %>">
+							<i class="bi bi-arrow-left-right"></i>
+							Compara
+						</button>
 					</article>
 					<% } %>
 				</div>
@@ -352,6 +359,26 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div
+			id="container-comparare"
+			style="
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				z-index: 9999;
+				background: #fff;
+				border: 2px solid #007bff;
+				border-radius: 10px;
+				padding: 1em;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+				min-width: 200px;
+			">
+			<strong>Compari:</strong>
+			<ul
+				id="lista-comparare"
+				style="margin: 0; padding: 0; list-style: none"></ul>
 		</div>
 
 		<%- include("../fragmente/footer") %>

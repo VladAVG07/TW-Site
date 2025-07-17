@@ -59,7 +59,6 @@ window.onload = function () {
 	const btn = document.getElementById('filtrare');
 	btn.onclick = filtrareProduse;
 
-	// Reusable filter function
 	function filtrareProduse() {
 		let checkedColors = Array.from(
 			document.querySelectorAll('input[name="culori"]:checked')
@@ -155,7 +154,6 @@ window.onload = function () {
 		}
 	}
 
-	// Bind onchange/oninput listeners
 	document.getElementById('inp-nume').oninput = filtrareProduse;
 	document
 		.querySelectorAll('input[name="culori"]')

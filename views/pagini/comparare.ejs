@@ -1,0 +1,96 @@
+<!-- filepath: views/pagini/comparare.ejs -->
+<!DOCTYPE html>
+<html lang="ro">
+	<head>
+		<title>Comparare Produse</title>
+		<%- include("../fragmente/head") %>
+		<link rel="stylesheet" href="/resurse/css/produse.css" />
+		<style>
+			.table-compare {
+				width: 100%;
+				border-collapse: collapse;
+				background: #fff;
+			}
+			.table-compare th,
+			.table-compare td {
+				border: 1px solid #dee2e6;
+				padding: 8px 12px;
+				text-align: left;
+			}
+			.table-compare th {
+				background: #e9ecef;
+			}
+			.compare-img {
+				max-width: 120px;
+			}
+		</style>
+	</head>
+	<body>
+		<%- include("../fragmente/header") %>
+		<main class="container">
+			<h1>Comparare produse</h1>
+			<% if (produse.length === 0) { %>
+			<p>Nu ai selectat niciun produs pentru comparare.</p>
+			<% } else { %>
+			<table class="table-compare">
+				<tr>
+					<th>Caracteristică</th>
+					<% produse.forEach(prod => { %>
+					<th>
+						<%= prod.nume %>
+						<br />
+						<img
+							src="/resurse/imagini/produse/<%= prod.imagine %>"
+							class="compare-img"
+							alt="<%= prod.nume %>" />
+					</th>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Preț</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.pret %> RON</td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Descriere</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.descriere %></td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Categorie</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.categorie_mare %></td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Subcategorie</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.subcategorie %></td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Specificatie numerica</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.specificatie_numerica %></td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Culoare</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.culoare %></td>
+					<% }) %>
+				</tr>
+				<tr>
+					<td>Etichete</td>
+					<% produse.forEach(prod => { %>
+					<td><%= prod.etichete %></td>
+					<% }) %>
+				</tr>
+			</table>
+			<% } %>
+		</main>
+		<%- include("../fragmente/footer") %>
+	</body>
+</html>

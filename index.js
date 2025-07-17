@@ -233,7 +233,6 @@ function readLastOferta() {
 	return oferte[oferte.length - 1];
 }
 
-// Funcție pentru verificarea dacă ora curentă este în interval
 function esteInInterval(interval, oraCurenta) {
 	const [start, end] = interval.split('-');
 	const [hStart, mStart] = start.split(':').map(Number);
@@ -246,7 +245,6 @@ function esteInInterval(interval, oraCurenta) {
 	return currentMin >= startMin && currentMin <= endMin;
 }
 
-// Funcție care returnează imaginile filtrate
 function obtineImaginiFiltrate() {
 	const json = JSON.parse(fs.readFileSync('resurse/json/galerie.json'));
 	const oraCurenta = new Date();
@@ -452,6 +450,23 @@ app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function (req, res, next) {
 
 app.get('/resurse/', function (req, res, next) {
 	afisareEroare(res, 403);
+});
+
+app.get('/comparare', async function (req, res) {
+	// Primește id-urile ca query: /comparare?ids=1,2
+	let ids = req.query.ids;
+	let produse = [];
+	if (ids) {
+		ids = ids.split(',').map((x) => parseInt(x));
+		if (ids.length > 0) {
+			const rezultat = await client.query(
+				`SELECT * FROM produse WHERE id = ANY($1::int[])`,
+				[ids]
+			);
+			produse = rezultat.rows;
+		}
+	}
+	res.render('pagini/comparare', { produse });
 });
 
 app.get(/^\/.*\.ejs$/, function (req, res, next) {

@@ -4,6 +4,7 @@
 		<title>Sali Fitness - produs</title>
 		<%- include("../fragmente/head") %>
 		<link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+		<script src="/resurse/js/comparare.js"></script>
 	</head>
 	<body>
 		<%- include("../fragmente/header") %>
@@ -67,6 +68,13 @@
 							src="/resurse/imagini/produse/<%- locals.prod.imagine %>"
 							alt="[imagine <%- locals.prod.nume %>]" />
 					</figure>
+
+					<button
+						class="btn btn-outline-primary btn-compara"
+						data-id="<%- locals.prod.id %>">
+						<i class="bi bi-arrow-left-right"></i>
+						Compară
+					</button>
 				</article>
 			</section>
 
@@ -118,6 +126,26 @@
 				<% } %>
 			</section>
 		</main>
+		<div
+			id="container-comparare"
+			style="
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				z-index: 9999;
+				background: #fff;
+				border: 2px solid #007bff;
+				border-radius: 10px;
+				padding: 1em;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+				min-width: 200px;
+			">
+			<strong>Compari:</strong>
+			<ul
+				id="lista-comparare"
+				style="margin: 0; padding: 0; list-style: none"></ul>
+		</div>
 
 		<%- include("../fragmente/footer") %>
 	</body>
